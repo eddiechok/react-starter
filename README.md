@@ -69,10 +69,22 @@ This project is licensed under the MIT License.
 
 - tailwind css
 - material ui
+- material svg icons
 - react hook form
 - yup js
 - decimal js
 - react query
 - vite
+- i18next
+- axios
+- date-fns
+- jsencrypt
+- capacitor
+- react router dom
+- prettier-plugin-organize-imports (organize imports on save)
+- babel-plugin-direct-import (enable tree-shaking for material ui imports)
+- lodash
 
-npm i react-hook-form @mui/material @hookform/resolvers yup decimal.js react-query
+npm i react-hook-form @mui/material @emotion/styled @emotion/react @mui/icons-material @hookform/resolvers yup decimal.js react-query react-i18next i18next i18next-http-backend i18next-browser-languagedetector axios date-fns jsencrypt @capacitor/core @capacitor/storage react-router-dom
+
+npm i --save-dev @capacitor/cli prettier-plugin-organize-imports babel-plugin-import
