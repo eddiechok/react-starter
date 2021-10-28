@@ -1,6 +1,6 @@
-# React Tailwindcss Boilerplate build with Vite
+# React Boilerplate build with Vite
 
-This is a [ReactJS](https://reactjs.org) + [Vite](https://vitejs.dev) boilerplate to be used with [Tailwindcss](https://tailwindcss.com).
+This is a [ReactJS](https://reactjs.org) + [Vite](https://vitejs.dev) boilerplate.
 
 ## What is inside?
 
@@ -11,7 +11,6 @@ This project uses many tools like:
 - [TypeScript](https://www.typescriptlang.org)
 - [Jest](https://jestjs.io)
 - [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
 - [Eslint](https://eslint.org)
 - [Prettier](https://prettier.io)
 
@@ -67,7 +66,6 @@ This project is licensed under the MIT License.
 
 ## project includes
 
-- tailwind css
 - material ui
 - material svg icons
 - react hook form

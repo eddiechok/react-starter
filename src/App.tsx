@@ -3,37 +3,13 @@ import { ThemeProvider } from '@mui/system';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
-//@ts-ignore
-import tailwindConfigModule from 'tailwind.config.js';
-import resolveConfig from 'tailwindcss/resolveConfig';
 import { AppContextProvider } from './contexts/AppContext';
 import { LoadingProvider } from './contexts/LoadingContext';
 import { ToastProvider } from './contexts/ToastContext';
 import Routes from './routes/Routes';
-
-const tailwindConfig = resolveConfig(tailwindConfigModule) as any;
+import './styles/global.scss';
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: tailwindConfig.theme.colors.primary
-    },
-    secondary: {
-      main: tailwindConfig.theme.colors.secondary
-    },
-    error: {
-      main: tailwindConfig.theme.colors.error
-    },
-    warning: {
-      main: tailwindConfig.theme.colors.warning
-    },
-    info: {
-      main: tailwindConfig.theme.colors.info
-    },
-    success: {
-      main: tailwindConfig.theme.colors.success
-    }
-  },
   spacing: 4,
   components: {
     MuiContainer: {
