@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, List, ListItem, ListItemText } from '@mui/material';
 //@ts-ignore
 import React, { useState } from 'react';
 import DataLoader from '../../components/DataLoader';
@@ -26,9 +26,13 @@ const InfiniteScrollPage = () => {
       <Header title="Infinite Scroll" />
       <Container maxWidth="sm">
         <DataWrapper isLoading={false} haveData={true}>
-          {items.map((_, i) => (
-            <div key={i}>div - #{i}</div>
-          ))}
+          <List>
+            {items.map((_, i) => (
+              <ListItem key={i} divider>
+                <ListItemText primary={`#${i}`} />
+              </ListItem>
+            ))}
+          </List>
           <DataLoader hasNextPage={hasMore} onScroll={fetchMoreData} />
         </DataWrapper>
       </Container>
