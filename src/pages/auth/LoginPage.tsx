@@ -15,8 +15,8 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
 import { SchemaOf } from 'yup';
 import usePostLogin, { LoginParams } from '../../api/post/usePostLogin';
-import AppTextField from '../../components/AppTextField';
 import Form from '../../components/hook-form/Form';
+import FormTextField from '../../components/hook-form/FormTextField';
 import LanguageButton from '../../components/ui/LanguageButton';
 import { useApp } from '../../contexts/AppContext';
 import appRoutes from '../../routes/app-routes';
@@ -76,12 +76,11 @@ const LoginPage = () => {
           <CardContent sx={{ textAlign: 'center' }}>
             <Form methods={methods} onSubmit={onSubmit}>
               <Stack spacing={4}>
-                <AppTextField
+                <FormTextField
                   name="username"
                   label={t(commonLabel.username)}
-                  dp={8}
                 />
-                <AppTextField
+                <FormTextField
                   name="password"
                   label={t(commonLabel.password)}
                   type="password"

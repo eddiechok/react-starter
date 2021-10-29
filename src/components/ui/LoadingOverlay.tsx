@@ -4,7 +4,7 @@ import React from 'react';
 // import Lottie from "react-lottie-player";
 // import LoadingJson from "../../../assets/loading.json";
 
-const Loading = () => {
+const LoadingOverlay = () => {
   return (
     <Backdrop
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -22,4 +22,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoadingOverlay;

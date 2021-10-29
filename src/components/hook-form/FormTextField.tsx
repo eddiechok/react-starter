@@ -1,18 +1,16 @@
-import { SelectProps } from '@mui/material';
-import React, { PropsWithChildren } from 'react';
+import { TextFieldProps } from '@mui/material';
+import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import useErrorMessage from '../../hooks/useErrorMessage';
 import { FormInput } from '../../shared/type';
-import AppSelect from '../ui/AppSelect';
+import AppTextField from '../ui/AppTextField';
 
-type FormSelectProps = PropsWithChildren<SelectProps> & FormInput;
+type FormTextFieldProps = TextFieldProps &
+  FormInput & {
+    dp?: number;
+  };
 
-const FormSelect = ({
-  children,
-  name,
-  msgLabel,
-  ...props
-}: FormSelectProps) => {
+const FormTextField = ({ name, msgLabel, ...props }: FormTextFieldProps) => {
   const { control } = useFormContext();
 
   const errorMessage = useErrorMessage({
@@ -27,12 +25,11 @@ const FormSelect = ({
       defaultValue="" // to fix changing from uncontrolled input to controlled input
       render={({ field }) => {
         return (
-          <AppSelect
+          <AppTextField
+            helperText={errorMessage}
+            error={!!errorMessage}
             {...field}
             {...props}
-            error={props.error || !!errorMessage}
-            helperText={errorMessage}
-            labelId={props.labelId || props.label}
           />
         );
       }}
@@ -40,4 +37,4 @@ const FormSelect = ({
   );
 };
 
-export default FormSelect;
+export default FormTextField;

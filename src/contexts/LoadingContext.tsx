@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 import { useIsMutating } from 'react-query';
-import Loading from '../components/ui/Loading';
+import Loading from '../components/ui/LoadingOverlay';
 
 const LoadingContext = createContext<[() => void, () => void]>([
   () => void 0,
@@ -18,13 +18,13 @@ export const LoadingProvider: React.FC = ({ children }) => {
     // }
   });
 
-  const present = () => {
+  const present = useCallback(() => {
     setCountLoading((prev) => prev + 1);
-  };
+  }, []);
 
-  const dismiss = () => {
+  const dismiss = useCallback(() => {
     setCountLoading((prev) => prev - 1);
-  };
+  }, []);
 
   return (
     <LoadingContext.Provider value={[present, dismiss]}>

@@ -15,6 +15,10 @@ const appRoutes = {
   gateway: '/gateway/:token/:lang',
   member: {
     profile: '/profile'
+  },
+  examples: {
+    infinite_scroll: '/examples/infinite-scroll',
+    secondary_password_dialog: '/examples/secondary-password-dialog'
   }
 };
 

@@ -23,7 +23,12 @@ const commonLabel = {
   login: 'login',
   sign_up: 'sign_up',
   username: 'username',
-  password: 'password'
+  password: 'password',
+  retry: 'retry',
+  no_data: 'no_data',
+  no_more_data: 'no_more_data',
+  cancel: 'cancel',
+  confirm: 'confirm'
 };
 
 export default commonLabel;

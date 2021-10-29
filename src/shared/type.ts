@@ -13,3 +13,9 @@ export type SelectOption = {
   title: string;
   value: string;
 };
+
+export type FormInput = {
+  name: string;
+  msgLabel?: string;
+  label?: string;
+};

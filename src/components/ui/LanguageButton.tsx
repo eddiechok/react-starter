@@ -36,6 +36,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
       input={<InputBase />} // remove border
       options={options}
       {...props}
+      sx={{ color: (theme) => theme.palette.primary.contrastText, ...props.sx }}
     />
   );
 };

@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import useGetAppVersions from '../api/get/useGetAppVersion';
 import useGetSettingStatus from '../api/get/useGetSettingStatus';
-import Loading from '../components/ui/Loading';
+import LoadingOverlay from '../components/ui/LoadingOverlay';
 import MaintenancePage from '../pages/maintenance/MaintenancePage';
 import { useLoading } from './LoadingContext';
 
@@ -22,12 +22,12 @@ type AppContextProps = {
 };
 
 const AppContext = createContext<AppContextProps>({
-  login: () => {},
-  logout: () => {},
+  login: () => void 0,
+  logout: () => void 0,
   isAuthenticated: false,
-  reloadApp: () => {},
+  reloadApp: () => void 0,
   isJustLogin: false,
-  justLoggedIn: () => {}
+  justLoggedIn: () => void 0
 });
 
 export const useApp = () => useContext(AppContext);
@@ -43,20 +43,23 @@ export const AppContextProvider: React.FC = ({ children }) => {
   });
   const [bypassMaintenance, setBypassMaintenance] = useState(false);
 
-  const login = useCallback((token: string, _bypassMaintenance = false) => {
-    Storage.set({ key: 'token', value: token }).then(() => {
-      setIsAuthenticated(true);
-      // show universal loading spinner with login background
-      present();
-      settingStatus
-        .refetch({ throwOnError: true })
-        .then(() => {
-          setIsJustLogin(true);
-          setBypassMaintenance(_bypassMaintenance);
-        })
-        .finally(dismiss);
-    });
-  }, []);
+  const login = useCallback(
+    (token: string, _bypassMaintenance = false) => {
+      Storage.set({ key: 'token', value: token }).then(() => {
+        setIsAuthenticated(true);
+        // show universal loading spinner with login background
+        present();
+        settingStatus
+          .refetch({ throwOnError: true })
+          .then(() => {
+            setIsJustLogin(true);
+            setBypassMaintenance(_bypassMaintenance);
+          })
+          .finally(dismiss);
+      });
+    },
+    [dismiss, present, settingStatus.refetch]
+  );
 
   const logout = useCallback(() => {
     setIsAuthenticated(false);
@@ -100,7 +103,7 @@ export const AppContextProvider: React.FC = ({ children }) => {
 
   // show loading spinner without any background
   if (!isCheckedAuthenticated || appVersions.isLoading) {
-    return <Loading />;
+    return <LoadingOverlay />;
   }
 
   // if url is not gateway, cant bypass maintenance, maintenance = 1

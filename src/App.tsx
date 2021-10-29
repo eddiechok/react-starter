@@ -1,10 +1,11 @@
-import { createTheme } from '@mui/material';
+import { createTheme, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/system';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { AppContextProvider } from './contexts/AppContext';
 import { LoadingProvider } from './contexts/LoadingContext';
+import { SecondaryPasswordDialogProvider } from './contexts/SecondaryPasswordDialogContext';
 import { ToastProvider } from './contexts/ToastContext';
 import Routes from './routes/Routes';
 import './styles/global.scss';
@@ -50,12 +51,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <LoadingProvider>
           <ToastProvider>
             <AppContextProvider>
-              <BrowserRouter>
-                <Routes />
-              </BrowserRouter>
+              <SecondaryPasswordDialogProvider>
+                <BrowserRouter>
+                  <Routes />
+                </BrowserRouter>
+              </SecondaryPasswordDialogProvider>
             </AppContextProvider>
           </ToastProvider>
         </LoadingProvider>

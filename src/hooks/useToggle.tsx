@@ -1,20 +1,26 @@
 import { useCallback, useState } from 'react';
 import { ToggleProps } from '../shared/type';
 
-function useToggle(init = false) {
+type UseToggleReturn = Required<ToggleProps> & {
+  toggle: () => void;
+};
+
+function useToggle(init = false): UseToggleReturn {
   const [isOpen, setIsOpen] = useState(init);
 
-  // open modal
   const present = useCallback(() => {
     setIsOpen(true);
   }, []);
 
-  // hide modal
   const dismiss = useCallback(() => {
     setIsOpen(false);
   }, []);
 
-  return { isOpen, present, dismiss } as Required<ToggleProps>;
+  const toggle = useCallback(() => {
+    setIsOpen((_isOpen) => !_isOpen);
+  }, []);
+
+  return { isOpen, present, dismiss, toggle };
 }
 
 export default useToggle;
