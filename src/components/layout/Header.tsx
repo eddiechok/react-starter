@@ -1,5 +1,6 @@
 import {
   Bookmark as BookmarkIcon,
+  ExitToApp,
   Home as HomeIcon,
   Menu as MenuIcon,
   Person as PersonIcon
@@ -12,7 +13,8 @@ import {
   Toolbar,
   Typography
 } from '@mui/material';
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
+import { useApp } from '../../contexts/AppContext';
 import useToggle from '../../hooks/useToggle';
 import appRoutes from '../../routes/app-routes';
 import LanguageButton from '../ui/LanguageButton';
@@ -22,35 +24,50 @@ export type HeaderProps = {
   title?: string;
 };
 
-const drawerList: DrawerItemProps[] = [
-  {
-    title: 'Dashboard',
-    link: appRoutes.home,
-    icon: <HomeIcon />
-  },
-  {
-    title: 'Profile',
-    link: appRoutes.member.profile,
-    icon: <PersonIcon />
-  },
-  {
-    title: 'Examples',
-    icon: <BookmarkIcon />,
-    children: [
-      {
-        title: 'Infinite Scroll List',
-        link: appRoutes.examples.infinite_scroll
-      },
-      {
-        title: 'Secondary Password Dialog',
-        link: appRoutes.examples.secondary_password_dialog
-      }
-    ]
-  }
-];
-
 const Header = ({ title }: HeaderProps) => {
   const { isOpen, present, dismiss } = useToggle();
+  const { logout } = useApp();
+
+  const drawerList = useMemo<DrawerItemProps[]>(
+    () => [
+      {
+        title: 'Dashboard',
+        link: appRoutes.home,
+        icon: <HomeIcon />
+      },
+      {
+        title: 'Profile',
+        link: appRoutes.member.profile,
+        icon: <PersonIcon />
+      },
+      {
+        title: 'Examples',
+        icon: <BookmarkIcon />,
+        children: [
+          {
+            title: 'Infinite Scroll List',
+            link: appRoutes.examples.infinite_scroll
+          },
+          {
+            title: 'Secondary Password Dialog',
+            link: appRoutes.examples.secondary_password_dialog
+          },
+          {
+            title: 'Form Input',
+            link: appRoutes.examples.form_input
+          }
+        ]
+      },
+      {
+        title: 'Sign Out',
+        icon: <ExitToApp />,
+        onClick: () => {
+          logout();
+        }
+      }
+    ],
+    [logout]
+  );
 
   return (
     <>

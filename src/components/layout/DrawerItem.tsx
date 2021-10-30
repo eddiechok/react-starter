@@ -13,16 +13,25 @@ import useToggle from '../../hooks/useToggle';
 export type DrawerItemProps = {
   title?: string;
   link?: string;
+  onClick?: () => void;
   icon?: ReactNode;
   children?: DrawerItemProps[];
 };
 
-const DrawerItem = ({ title, link, icon, children }: DrawerItemProps) => {
+const DrawerItem = ({
+  title,
+  link,
+  icon,
+  onClick,
+  children
+}: DrawerItemProps) => {
   const history = useHistory();
   const { isOpen, toggle } = useToggle();
 
   const click = () => {
-    if (children) {
+    if (onClick) {
+      onClick();
+    } else if (children) {
       toggle();
     } else if (link) {
       history.push(link);

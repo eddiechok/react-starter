@@ -98,7 +98,7 @@ const SecondaryPasswordDialog = ({
                   fontWeight: 'bold',
                   flexGrow: 1,
                   padding: '10px 0',
-                  '&:focus-visible': {
+                  '&:focusVisible': {
                     outline: 'none'
                   }
                 }}

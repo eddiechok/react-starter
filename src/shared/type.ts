@@ -5,8 +5,8 @@ export type ToggleProps = {
 };
 
 export type DateRange = {
-  dateFrom: string;
-  dateTo: string;
+  dateFrom?: Date | null;
+  dateTo?: Date | null;
 };
 
 export type SelectOption = {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import DashboardPage from '../pages/dashboard/DashboardPage';
+import FormInputPage from '../pages/examples/FormInputPage';
 import InfiniteScrollPage from '../pages/examples/InfiniteScrollPage';
 import SecondaryPasswordDialogPage from '../pages/examples/SecondaryPasswordDialogPage';
 import ProfilePage from '../pages/member/ProfilePage';
@@ -24,6 +25,10 @@ const privateRoutes: IRoute[] = [
   {
     path: appRoutes.examples.secondary_password_dialog,
     component: SecondaryPasswordDialogPage
+  },
+  {
+    path: appRoutes.examples.form_input,
+    component: FormInputPage
   }
 ];
 

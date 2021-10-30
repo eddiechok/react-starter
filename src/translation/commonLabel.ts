@@ -16,7 +16,8 @@ const commonLabel = {
   no_special_characters: 'no_special_characters',
   LABEL_equal_to_FIELD: 'LABEL_equal_to_FIELD',
   LABEL_not_equal_to_FIELD: 'LABEL_not_equal_to_FIELD',
-
+  date_must_be_later_than_MIN: 'date_must_be_later_than_MIN',
+  date_must_be_earlier_than_MAX: 'date_must_be_earlier_than_MAX',
   under_maintenance: 'under_maintenance',
   login_has_expired_please_log_in_again:
     'login_has_expired_please_log_in_again',
@@ -28,7 +29,8 @@ const commonLabel = {
   no_data: 'no_data',
   no_more_data: 'no_more_data',
   cancel: 'cancel',
-  confirm: 'confirm'
+  confirm: 'confirm',
+  date: 'date'
 };
 
 export default commonLabel;

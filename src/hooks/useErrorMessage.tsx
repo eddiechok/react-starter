@@ -12,29 +12,27 @@ const useErrorMessage = ({ name, msgLabel }: UseErrorMessageProps) => {
   const {
     formState: { errors }
   } = useFormContext();
-  const msg = useMemo(() => get(errors, name)?.message, [errors]);
+  const msg = useMemo(() => get(errors, name)?.message, [errors, name]);
   const [errorMsg, setErrorMsg] = useState('');
   const { t } = useTranslation();
 
   useEffect(() => {
-    try {
-      const msgObj = msg && JSON.parse(msg);
-      if (!msgObj || !msgObj.key) {
-        setErrorMsg(msgObj);
-      } else if (msgObj.data) {
-        const { label, path, ...rest } = msgObj.data;
+    if (typeof msg === 'object') {
+      if (!msg.key) {
+        setErrorMsg('');
+      } else if (msg.data) {
+        const { label, path, ...rest } = msg.data;
         setErrorMsg(
-          t(msgObj.key, {
+          t(msg.key, {
             label: msgLabel || label || (path ? t('common:' + path) : ''),
             ...rest
           })
         );
       } else {
-        setErrorMsg(t(msgObj.key));
+        setErrorMsg(t(msg.key));
       }
-    } catch (e) {
-      // if msg cant be json parsed
-      msg && setErrorMsg(msg);
+    } else {
+      setErrorMsg(msg);
     }
   }, [msg, msgLabel, t]);
 

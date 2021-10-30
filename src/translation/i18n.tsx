@@ -55,6 +55,10 @@ const i18nextOptions: InitOptions = {
       'path',
       'subdomain'
     ]
+  },
+  interpolation: {
+    // react already saves from xss
+    escapeValue: false
   }
 };
 

@@ -1,10 +1,13 @@
-import { format, subDays } from 'date-fns';
+import { subDays } from 'date-fns';
 import * as yup from 'yup';
 import { DateRange } from './type';
 
-export const defaultDateRange: DateRange = {
-  dateFrom: format(subDays(new Date(), 3), 'yyyy-MM-dd'),
-  dateTo: format(new Date(), 'yyyy-MM-dd')
-};
-
 export const Yup = yup;
+
+export const SYSTEM_DATE_FORMAT = 'dd/MM/yyyy';
+export const API_DATE_FORMAT = 'yyyy-MM-dd';
+
+export const defaultDateRange: DateRange = {
+  dateFrom: subDays(new Date(), 3),
+  dateTo: new Date()
+};

@@ -20,9 +20,9 @@ export function getMonthList(
   return monthList.map(getMonthName);
 }
 
-const isiOS = () => {
-  return navigator.userAgent.match(/ipad|iphone/i);
-};
+// const isiOS = () => {
+//   return navigator.userAgent.match(/ipad|iphone/i);
+// };
 
 export const copyToClipboard = (str: string) => {
   // return new Promise<void>((resolve) => {
@@ -168,8 +168,8 @@ export const formatNum = (options: FormatNumParams) => {
 export const validateMultipleOf = (
   _this: any,
   value?: number,
-  multipleof: number = 0,
-  amount: number = 0
+  multipleof = 0,
+  amount = 0
 ) => {
   if (value && value % multipleof !== 0) {
     return _this.createError({
@@ -187,8 +187,8 @@ export const validateMultipleOf = (
 export const validateMinPercent = (
   _this: any,
   value?: number,
-  minPercent: number = 0,
-  amount: number = 0
+  minPercent = 0,
+  amount = 0
 ) => {
   const min = (amount * minPercent) / 100;
 
@@ -205,8 +205,8 @@ export const validateMinPercent = (
 export const validateMaxPercent = (
   _this: any,
   value?: number,
-  maxPercent: number = 100,
-  amount: number = 0
+  maxPercent = 100,
+  amount = 0
 ) => {
   const max = (amount * maxPercent) / 100;
 

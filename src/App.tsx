@@ -1,3 +1,4 @@
+import '@mui/lab/themeAugmentation'; // get the types for lab in theme configuration
 import { createTheme, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/system';
 import React from 'react';

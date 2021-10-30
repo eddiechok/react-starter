@@ -12,8 +12,8 @@ type AppTextFieldProps = TextFieldProps & {
   dp?: number;
 };
 
-const AppTextField = React.forwardRef<HTMLDivElement | null>(
-  ({ type, dp, ...props }: AppTextFieldProps, ref) => {
+const AppTextField = React.forwardRef<HTMLDivElement | null, AppTextFieldProps>(
+  ({ type, dp, ...props }, ref) => {
     const [inputType, setInputType] = useState(type);
     const inputRef = useDp(dp);
 
