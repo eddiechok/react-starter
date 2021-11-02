@@ -16,10 +16,7 @@ const theme = createTheme({
   components: {
     MuiContainer: {
       defaultProps: {
-        maxWidth: 'lg',
-        sx: {
-          py: 4
-        }
+        maxWidth: 'lg'
       }
     },
     MuiTextField: {

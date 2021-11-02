@@ -19,7 +19,8 @@ const appRoutes = {
   examples: {
     infinite_scroll: '/examples/infinite-scroll',
     secondary_password_dialog: '/examples/secondary-password-dialog',
-    form_input: '/examples/form-input'
+    form_input: '/examples/form-input',
+    tree_list: '/examples/tree-list'
   }
 };
 

@@ -23,7 +23,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
     i18n.changeLanguage(lang).then(() => {
       queryClient.invalidateQueries({
         predicate: (query) => {
-          return !query.isStaleByTime(Infinity); // do not refetch queries that is stale for Infinity
+          return query.isStaleByTime(Infinity); // do not refetch queries that is stale for Infinity
         }
       });
     });

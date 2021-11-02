@@ -25,6 +25,7 @@ declare module 'yup' {
     startWith0(message?: string): this;
     otp(): this;
     asyncUsername(): this;
+    optionalMin(min: number): this;
   }
 
   // interface BooleanSchema<T> {
@@ -116,7 +117,7 @@ Yup.setLocale({
 
 Yup.addMethod(Yup.string, 'mobileNumber', function (message) {
   // message = message || ((data: any) => ({ key: 'invalid format', data }));
-  return this.min(8).max(15).integer(message); // all digits with min 8 and max 15
+  return this.optionalMin(8).max(15).integer(message); // all digits with min 8 and max 15
 });
 
 Yup.addMethod(Yup.string, 'noChinese', function (message) {
@@ -130,42 +131,53 @@ Yup.addMethod(Yup.string, 'noChinese', function (message) {
 Yup.addMethod(Yup.string, 'containUppercase', function (message) {
   message =
     message || ((data: any) => ({ key: commonLabel.contain_uppercase, data }));
-  return this.matches(/[A-Z]+/, { message }); //
+  return this.matches(/[A-Z]+/, { excludeEmptyString: true, message }); //
 });
 
 Yup.addMethod(Yup.string, 'containLowercase', function (message) {
   message =
     message || ((data: any) => ({ key: commonLabel.contain_lowercase, data }));
-  return this.matches(/[a-z]+/, { message }); //
+  return this.matches(/[a-z]+/, { excludeEmptyString: true, message }); //
 });
 
 Yup.addMethod(Yup.string, 'containDigit', function (message) {
   message =
     message || ((data: any) => ({ key: commonLabel.contain_digit, data }));
-  return this.matches(/[0-9]+/, { message }); //
+  return this.matches(/[0-9]+/, { excludeEmptyString: true, message }); //
 });
 
 Yup.addMethod(Yup.string, 'noSpecialChar', function (message) {
   message =
     message ||
     ((data: any) => ({ key: commonLabel.no_special_characters, data }));
-  return this.matches(/^[A-Za-z0-9]+$/, { message }); //
+  return this.matches(/^[A-Za-z0-9]+$/, { excludeEmptyString: true, message }); //
+});
+
+Yup.addMethod(Yup.string, 'optionalMin', function (min: number) {
+  const regex = new RegExp(`.{${min},}`);
+  return this.matches(regex, {
+    excludeEmptyString: true,
+    message: (data) => ({
+      key: commonLabel.min_MIN_char,
+      data: { ...data, min }
+    })
+  });
 });
 
 Yup.addMethod(Yup.string, 'username', function () {
-  return this.min(4).max(19).noChinese().noSpecialChar();
+  return this.optionalMin(4).max(19).noChinese().noSpecialChar();
 });
 
 Yup.addMethod(Yup.string, 'password', function () {
-  return this.min(8).max(16).containUppercase().containDigit();
+  return this.optionalMin(8).max(16).containUppercase().containDigit();
 });
 
 Yup.addMethod(Yup.string, 'secondaryPassword', function () {
-  return this.min(6).max(15);
+  return this.optionalMin(6).max(15);
 });
 
 Yup.addMethod(Yup.string, 'tradingPassword', function () {
-  return this.min(6)
+  return this.optionalMin(6)
     .max(15)
     .containUppercase()
     .containLowercase()
@@ -174,7 +186,7 @@ Yup.addMethod(Yup.string, 'tradingPassword', function () {
 });
 
 Yup.addMethod(Yup.string, 'otp', function () {
-  return this.min(6).max(6);
+  return this.optionalMin(6).max(6);
 });
 
 Yup.addMethod(

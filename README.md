@@ -87,7 +87,8 @@ This project is licensed under the MIT License.
 - @date-io/date-fns (date picker)
 - @mui/lab (date picker)
 - utility-types
+- react-simple-pull-to-refresh
 
-npm i react-hook-form @mui/material @emotion/styled @emotion/react @mui/icons-material @hookform/resolvers yup decimal.js react-query react-i18next i18next i18next-http-backend i18next-browser-languagedetector axios date-fns jsencrypt @capacitor/core @capacitor/storage react-router-dom react-infinite-scroll-hook react-otp-input @date-io/date-fns @mui/lab utility-types
+npm i react-hook-form @mui/material @emotion/styled @emotion/react @mui/icons-material @hookform/resolvers yup decimal.js react-query react-i18next i18next i18next-http-backend i18next-browser-languagedetector axios date-fns jsencrypt @capacitor/core @capacitor/storage react-router-dom react-infinite-scroll-hook react-otp-input @date-io/date-fns @mui/lab utility-types react-simple-pull-to-refresh
 
 npm i --save-dev @capacitor/cli prettier-plugin-organize-imports babel-plugin-import

@@ -4,6 +4,7 @@ import DashboardPage from '../pages/dashboard/DashboardPage';
 import FormInputPage from '../pages/examples/FormInputPage';
 import InfiniteScrollPage from '../pages/examples/InfiniteScrollPage';
 import SecondaryPasswordDialogPage from '../pages/examples/SecondaryPasswordDialogPage';
+import TreeListPage from '../pages/examples/TreeListPage';
 import ProfilePage from '../pages/member/ProfilePage';
 import appRoutes from './app-routes';
 import { getDefaultRoutes } from './DefaultRoutes';
@@ -29,6 +30,10 @@ const privateRoutes: IRoute[] = [
   {
     path: appRoutes.examples.form_input,
     component: FormInputPage
+  },
+  {
+    path: appRoutes.examples.tree_list,
+    component: TreeListPage
   }
 ];
 
