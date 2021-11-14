@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Container,
   Stack,
   Toolbar
 } from '@mui/material';
@@ -17,6 +16,7 @@ import { SchemaOf } from 'yup';
 import usePostLogin, { LoginParams } from '../../api/post/usePostLogin';
 import Form from '../../components/hook-form/Form';
 import FormTextField from '../../components/hook-form/FormTextField';
+import AppContainer from '../../components/ui/AppContainer';
 import LanguageButton from '../../components/ui/LanguageButton';
 import { useApp } from '../../contexts/AppContext';
 import appRoutes from '../../routes/app-routes';
@@ -67,7 +67,7 @@ const LoginPage = () => {
           <LanguageButton />
         </Toolbar>
       </AppBar>
-      <Container maxWidth="xs">
+      <AppContainer maxWidth="xs">
         <Card>
           <CardHeader
             title={t(commonLabel.login)}
@@ -79,11 +79,13 @@ const LoginPage = () => {
                 <FormTextField
                   name="username"
                   label={t(commonLabel.username)}
+                  required
                 />
                 <FormTextField
                   name="password"
                   label={t(commonLabel.password)}
                   type="password"
+                  required
                 />
                 <Stack direction="row" spacing={4}>
                   <Button variant="contained" color="primary" type="submit">
@@ -101,7 +103,7 @@ const LoginPage = () => {
             </Form>
           </CardContent>
         </Card>
-      </Container>
+      </AppContainer>
     </>
   );
 };

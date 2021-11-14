@@ -30,7 +30,8 @@ const commonLabel = {
   no_more_data: 'no_more_data',
   cancel: 'cancel',
   confirm: 'confirm',
-  date: 'date'
+  date: 'date',
+  action_cannot_be_reverted: "action_cannot_be_reverted"
 };
 
 export default commonLabel;

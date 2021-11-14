@@ -1,31 +1,17 @@
 import '@mui/lab/themeAugmentation'; // get the types for lab in theme configuration
-import { createTheme, CssBaseline } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/system';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
+import theme from './config/theme';
+import { AlertDialogProvider } from './contexts/AlertDialogContext';
 import { AppContextProvider } from './contexts/AppContext';
 import { LoadingProvider } from './contexts/LoadingContext';
 import { SecondaryPasswordDialogProvider } from './contexts/SecondaryPasswordDialogContext';
 import { ToastProvider } from './contexts/ToastContext';
 import Routes from './routes/Routes';
 import './styles/global.scss';
-
-const theme = createTheme({
-  spacing: 4,
-  components: {
-    MuiContainer: {
-      defaultProps: {
-        maxWidth: 'lg'
-      }
-    },
-    MuiTextField: {
-      defaultProps: {
-        variant: 'outlined'
-      }
-    }
-  }
-});
 
 /**
  * Setup React Query
@@ -54,9 +40,11 @@ function App() {
           <ToastProvider>
             <AppContextProvider>
               <SecondaryPasswordDialogProvider>
-                <BrowserRouter>
-                  <Routes />
-                </BrowserRouter>
+                <AlertDialogProvider>
+                  <BrowserRouter>
+                    <Routes />
+                  </BrowserRouter>
+                </AlertDialogProvider>
               </SecondaryPasswordDialogProvider>
             </AppContextProvider>
           </ToastProvider>

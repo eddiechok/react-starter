@@ -1,15 +1,16 @@
-import { Container, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 //@ts-ignore
 import React from 'react';
 import Header from '../../components/layout/Header';
+import AppContainer from '../../components/ui/AppContainer';
 
 const DashboardPage = () => {
   return (
     <>
       <Header title="Dashboard" />
-      <Container>
+      <AppContainer>
         <Typography variant="h4">Dashboard</Typography>
-      </Container>
+      </AppContainer>
     </>
   );
 };

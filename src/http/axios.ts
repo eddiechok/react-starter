@@ -18,8 +18,7 @@ Axios.defaults.headers.common = {
 Axios.interceptors.request.use(async (config) => {
   if (config.headers) {
     // set accept language to current language
-    config.headers['Accept-Language'] =
-      (await (await Storage.get({ key: 'i18nextLng' })).value) || '';
+    config.headers['Accept-Language'] = localStorage.getItem('i18nextLng') || '';
 
     // intercept token into headers
     if (!config.headers.authorization) {

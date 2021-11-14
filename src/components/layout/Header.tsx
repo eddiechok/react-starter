@@ -26,7 +26,7 @@ export type HeaderProps = {
 
 const Header = ({ title }: HeaderProps) => {
   const { isOpen, present, dismiss } = useToggle();
-  const { logout } = useApp();
+  const { logout, isAuthenticated } = useApp();
 
   const drawerList = useMemo<DrawerItemProps[]>(
     () => [
@@ -77,16 +77,18 @@ const Header = ({ title }: HeaderProps) => {
     <>
       <AppBar position="sticky" color="primary">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={present}
-          >
-            <MenuIcon />
-          </IconButton>
+          {isAuthenticated && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={present}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
           {title && (
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               {title}

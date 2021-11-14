@@ -1,9 +1,10 @@
-import { Container, List, ListItem, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemText } from '@mui/material';
 //@ts-ignore
 import React, { useState } from 'react';
 import DataLoader from '../../components/DataLoader';
 import DataWrapper from '../../components/DataWrapper';
 import Header from '../../components/layout/Header';
+import AppContainer from '../../components/ui/AppContainer';
 
 const InfiniteScrollPage = () => {
   const [items, setItems] = useState(Array.from({ length: 20 }));
@@ -24,7 +25,7 @@ const InfiniteScrollPage = () => {
   return (
     <>
       <Header title="Infinite Scroll" />
-      <Container maxWidth="sm">
+      <AppContainer maxWidth="sm">
         <DataWrapper isLoading={false} haveData={true}>
           <List>
             {items.map((_, i) => (
@@ -35,7 +36,7 @@ const InfiniteScrollPage = () => {
           </List>
           <DataLoader hasNextPage={hasMore} onScroll={fetchMoreData} />
         </DataWrapper>
-      </Container>
+      </AppContainer>
     </>
   );
 };

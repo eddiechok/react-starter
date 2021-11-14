@@ -1,6 +1,7 @@
-import { Button, Container } from '@mui/material';
+import { Button } from '@mui/material';
 import React from 'react';
 import Header from '../../components/layout/Header';
+import AppContainer from '../../components/ui/AppContainer';
 import { useSecPwDialog } from '../../contexts/SecondaryPasswordDialogContext';
 
 const SecondaryPasswordDialogPage = () => {
@@ -17,11 +18,11 @@ const SecondaryPasswordDialogPage = () => {
   return (
     <>
       <Header title="Secondary Password Dialog" />
-      <Container maxWidth="sm">
+      <AppContainer maxWidth="sm">
         <Button variant="contained" color="primary" onClick={click}>
           Open Dialog
         </Button>
-      </Container>
+      </AppContainer>
     </>
   );
 };
