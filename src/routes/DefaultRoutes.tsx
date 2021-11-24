@@ -13,14 +13,6 @@ const publicRoutes: IRoute[] = [
 
 export const getDefaultRoutes = () => {
   return publicRoutes.map(({ component: Component, ...route }, index) => {
-    if (!Component) return null;
-    return (
-      <Route
-        exact={route.exact !== undefined ? route.exact : true}
-        path={route.path}
-        key={index}
-        render={(props) => <Component {...props} />}
-      />
-    );
+    return <Route key={index} element={<Component />} {...route} />;
   });
 };

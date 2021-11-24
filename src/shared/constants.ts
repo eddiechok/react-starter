@@ -11,3 +11,5 @@ export const defaultDateRange: DateRange = {
   dateFrom: subDays(new Date(), 3),
   dateTo: new Date()
 };
+
+export const DRAWER_WIDTH = 260;

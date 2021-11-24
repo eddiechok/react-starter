@@ -12,10 +12,9 @@ import useGetTreeList, {
 import DataWrapper from '../../components/DataWrapper';
 import Form from '../../components/hook-form/Form';
 import FormTextField from '../../components/hook-form/FormTextField';
-import Header from '../../components/layout/Header';
-import AppContainer from '../../components/ui/AppContainer';
 import { NodeItem } from '../../components/ui/AppTreeItem';
 import AppTreeView from '../../components/ui/AppTreeView';
+import AppContainer from '../../layout/AppContainer';
 import { Yup } from '../../shared/constants';
 import commonLabel from '../../translation/commonLabel';
 import ReferralTreeItem from './ReferralTreeItem';
@@ -118,7 +117,6 @@ const TreeListPage = () => {
 
   return (
     <>
-      <Header title="Tree List" />
       <AppContainer maxWidth="lg" onRefresh={treeList.refetch}>
         <DataWrapper
           isLoading={treeList.isLoading}

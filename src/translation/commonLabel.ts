@@ -31,7 +31,9 @@ const commonLabel = {
   cancel: 'cancel',
   confirm: 'confirm',
   date: 'date',
-  action_cannot_be_reverted: "action_cannot_be_reverted"
+  action_cannot_be_reverted: 'action_cannot_be_reverted',
+  sign_out: 'sign_out',
+  are_you_sure_to_sign_out: 'are_you_sure_to_sign_out'
 };
 
 export default commonLabel;

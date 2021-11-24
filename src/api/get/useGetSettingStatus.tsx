@@ -5,6 +5,7 @@ import { checkResponse } from '../../shared/functions';
 
 type SettingStatus = {
   username: string;
+  avatar?: string;
 };
 
 const useGetSettingStatus = (

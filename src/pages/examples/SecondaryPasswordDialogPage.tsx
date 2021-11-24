@@ -1,8 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import Header from '../../components/layout/Header';
-import AppContainer from '../../components/ui/AppContainer';
 import { useSecPwDialog } from '../../contexts/SecondaryPasswordDialogContext';
+import AppContainer from '../../layout/AppContainer';
 
 const SecondaryPasswordDialogPage = () => {
   const [presentSecPw] = useSecPwDialog();
@@ -17,7 +16,6 @@ const SecondaryPasswordDialogPage = () => {
 
   return (
     <>
-      <Header title="Secondary Password Dialog" />
       <AppContainer maxWidth="sm">
         <Button variant="contained" color="primary" onClick={click}>
           Open Dialog

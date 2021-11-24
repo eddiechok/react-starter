@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import ForgetPasswordPage from '../pages/auth/ForgetPasswordPage';
 import LoginPage from '../pages/auth/LoginPage';
 import SignupPage from '../pages/auth/SignupPage';
@@ -24,24 +24,12 @@ const publicRoutes: IRoute[] = [
 
 export const PublicRoutes = () => {
   return (
-    <Switch>
+    <Routes>
       {getDefaultRoutes()}
       {publicRoutes.map(({ component: Component, ...route }, index) => {
-        if (!Component) return null;
-        return (
-          <Route
-            exact={route.exact !== undefined ? route.exact : true}
-            path={route.path}
-            key={index}
-            render={(props) => (
-              // <UnauthenticatedLayout>
-              <Component {...props} />
-              // </UnauthenticatedLayout>
-            )}
-          />
-        );
+        return <Route key={index} element={<Component />} {...route} />;
       })}
-      <Redirect to={appRoutes.auth.login} />
-    </Switch>
+      <Route path="*" element={<Navigate to={appRoutes.auth.login} />} />
+    </Routes>
   );
 };

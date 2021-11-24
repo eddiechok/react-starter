@@ -11,14 +11,14 @@ import {
 import React, { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router';
 import { SchemaOf } from 'yup';
 import usePostLogin, { LoginParams } from '../../api/post/usePostLogin';
 import Form from '../../components/hook-form/Form';
 import FormTextField from '../../components/hook-form/FormTextField';
-import AppContainer from '../../components/ui/AppContainer';
 import LanguageButton from '../../components/ui/LanguageButton';
 import { useApp } from '../../contexts/AppContext';
+import useCustomNavigate from '../../hooks/useCustomNavigate';
+import AppContainer from '../../layout/AppContainer';
 import appRoutes from '../../routes/app-routes';
 import { Yup } from '../../shared/constants';
 import commonLabel from '../../translation/commonLabel';
@@ -28,7 +28,7 @@ type FormValues = Pick<LoginParams, 'username' | 'password'>;
 
 const LoginPage = () => {
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useCustomNavigate();
   const { login } = useApp();
   const { mutate } = usePostLogin();
 
@@ -94,7 +94,7 @@ const LoginPage = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => history.push(appRoutes.auth.register())}
+                    onClick={() => navigate(appRoutes.auth.register())}
                   >
                     {t(commonLabel.sign_up)}
                   </Button>

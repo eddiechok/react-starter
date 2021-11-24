@@ -8,11 +8,10 @@ import Form from '../../components/hook-form/Form';
 import FormDatePicker from '../../components/hook-form/FormDatePicker';
 import FormDateRangePicker from '../../components/hook-form/FormDateRangePicker';
 import FormFileInput from '../../components/hook-form/FormFileInput';
-import Header from '../../components/layout/Header';
-import AppContainer from '../../components/ui/AppContainer';
 import AppDatePicker from '../../components/ui/AppDatePicker';
 import AppDateRangePicker from '../../components/ui/AppDateRangePicker';
 import AppFileInput from '../../components/ui/AppFileInput';
+import AppContainer from '../../layout/AppContainer';
 import { Yup } from '../../shared/constants';
 import { DateRange } from '../../shared/type';
 
@@ -67,7 +66,6 @@ const FormInputPage = () => {
 
   return (
     <>
-      <Header title="Form Input Page" />
       <AppContainer maxWidth="sm">
         <Form methods={methods} onSubmit={onSubmit}>
           <Grid container spacing={4}>
