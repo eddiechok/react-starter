@@ -7,9 +7,7 @@ const appRoutes = {
     }: { referralCode?: string; path?: boolean } | undefined = {}) => {
       return `/register/${path ? ':referralCode?' : referralCode}`;
     },
-    forget_password: () => {
-      return '/forget-password';
-    }
+    forget_password: '/forget-password'
   },
   home: '/home',
   gateway: '/gateway/:token/:lang',

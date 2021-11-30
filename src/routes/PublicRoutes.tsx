@@ -17,7 +17,7 @@ const publicRoutes: IRoute[] = [
     component: SignupPage
   },
   {
-    path: appRoutes.auth.forget_password(),
+    path: appRoutes.auth.forget_password,
     component: ForgetPasswordPage
   }
 ];
