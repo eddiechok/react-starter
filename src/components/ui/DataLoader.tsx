@@ -1,36 +1,39 @@
-import { CircularProgress, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
+import { Box, CircularProgress, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
-import commonLabel from '../translation/commonLabel';
+import commonLabel from '../../translation/commonLabel';
 
 type DataLoaderProps = {
   hasNextPage?: boolean;
-  onScroll?: () => void;
+  onScroll?: () => Promise<any>;
 };
 
 const DataLoader = ({ hasNextPage = false, onScroll }: DataLoaderProps) => {
   const { t } = useTranslation();
-
+  const [loading, setLoading] = useState(false);
   const [sentryRef] = useInfiniteScroll({
-    loading: false,
+    loading,
     hasNextPage,
     onLoadMore: () => {
-      onScroll && onScroll();
+      setLoading(true);
+      onScroll?.().then(() => setLoading(false));
     },
     disabled: !hasNextPage,
     rootMargin: '0px 0px 100px 0px'
   });
 
   return (
-    <Box ref={sentryRef} sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Box
+      ref={sentryRef}
+      sx={{ display: 'flex', justifyContent: 'center', py: 4 }}
+    >
       <>
         {hasNextPage ? (
           <CircularProgress />
         ) : (
           <Typography
-            sx={{ my: 4, textAlign: 'center', color: 'GrayText' }}
+            sx={{ textAlign: 'center', color: 'GrayText' }}
             variant="body2"
           >
             {t(commonLabel.no_more_data)}

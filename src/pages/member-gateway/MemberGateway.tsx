@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
-import { useApp } from '../../contexts/AppContext';
 import useCustomNavigate from '../../hooks/useCustomNavigate';
+import { useApp } from '../../providers/AppProvider';
 import appRoutes from '../../routes/app-routes';
 
 const MemberGateway = () => {

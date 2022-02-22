@@ -1,11 +1,10 @@
-import { SelectProps } from '@mui/material';
 import React, { PropsWithChildren } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import useErrorMessage from '../../hooks/useErrorMessage';
 import { FormInput } from '../../shared/type';
-import AppSelect from '../ui/AppSelect';
+import AppSelect, { AppSelectProps } from '../ui/AppSelect';
 
-type FormSelectProps = PropsWithChildren<SelectProps> & FormInput;
+type FormSelectProps = PropsWithChildren<AppSelectProps> & FormInput;
 
 const FormSelect = ({
   children,

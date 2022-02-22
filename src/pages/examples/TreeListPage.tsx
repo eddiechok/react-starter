@@ -9,13 +9,14 @@ import useGetTreeList, {
   DownlineList,
   TreeListParams
 } from '../../api/get/useGetTreeList';
-import DataWrapper from '../../components/DataWrapper';
 import Form from '../../components/hook-form/Form';
 import FormTextField from '../../components/hook-form/FormTextField';
 import { NodeItem } from '../../components/ui/AppTreeItem';
 import AppTreeView from '../../components/ui/AppTreeView';
+import DataWrapper from '../../components/ui/DataWrapper';
 import AppContainer from '../../layout/AppContainer';
 import { Yup } from '../../shared/constants';
+import { isQueriesLoading } from '../../shared/functions';
 import commonLabel from '../../translation/commonLabel';
 import ReferralTreeItem from './ReferralTreeItem';
 
@@ -119,7 +120,7 @@ const TreeListPage = () => {
     <>
       <AppContainer maxWidth="lg" onRefresh={treeList.refetch}>
         <DataWrapper
-          isLoading={treeList.isLoading}
+          isLoading={isQueriesLoading(treeList)}
           haveData={!!treeList.data?.downline_list}
         >
           <Form methods={methods} onSubmit={onSubmit}>

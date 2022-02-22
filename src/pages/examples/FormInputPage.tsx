@@ -8,9 +8,12 @@ import Form from '../../components/hook-form/Form';
 import FormDatePicker from '../../components/hook-form/FormDatePicker';
 import FormDateRangePicker from '../../components/hook-form/FormDateRangePicker';
 import FormFileInput from '../../components/hook-form/FormFileInput';
+import FormImageInput from '../../components/hook-form/FormImageInput';
+import FormSelect from '../../components/hook-form/FormSelect';
 import AppDatePicker from '../../components/ui/AppDatePicker';
 import AppDateRangePicker from '../../components/ui/AppDateRangePicker';
 import AppFileInput from '../../components/ui/AppFileInput';
+import AppImageInput from '../../components/ui/AppImageInput';
 import AppContainer from '../../layout/AppContainer';
 import { Yup } from '../../shared/constants';
 import { DateRange } from '../../shared/type';
@@ -20,6 +23,8 @@ type FormValues = {
   dateFrom: Date | null;
   dateTo: Date | null;
   images: FileList | null;
+  select: string;
+  image_input: File | null;
 };
 
 const schema: SchemaOf<FormValues> = Yup.object({
@@ -38,7 +43,9 @@ const schema: SchemaOf<FormValues> = Yup.object({
     .required()
     .min(new Date())
     .max(addDays(new Date(), 7)), // disallow form to submit
-  images: Yup.mixed().required()
+  images: Yup.mixed().required(),
+  select: Yup.string().required(),
+  image_input: Yup.mixed().required()
 });
 
 const FormInputPage = () => {
@@ -153,6 +160,37 @@ const FormInputPage = () => {
                 fileInputProps={{
                   accept: 'image/*',
                   multiple: true
+                }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormSelect
+                name="select"
+                label="Select"
+                fullWidth
+                required
+                options={[
+                  { title: '123', value: '123' },
+                  { title: '456', value: '456' }
+                ]}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <AppImageInput
+                fileInputProps={{
+                  accept: 'image/*',
+                  multiple: true,
+                  onChange: (e) => setFiles(e.target.files)
+                }}
+                fileValue={files?.[0]}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormImageInput
+                name="image_input"
+                label="Image Input"
+                fileInputProps={{
+                  accept: 'image/*'
                 }}
               />
             </Grid>

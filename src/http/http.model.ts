@@ -9,11 +9,17 @@ export type PaginationData = {
   limit?: number;
 };
 
-export type TableHeaderList = {
-  key: string;
-  name: string;
-  align: "left" | "right" | "center";
-}[];
+export type TableHeader = {
+  label_name: string;
+  param_name: string;
+  show: { filter_param: string; filter_value: string };
+  align: 'left' | 'right' | 'center';
+};
+
+export type TableSummary = {
+  label: string;
+  value: any;
+};
 
 export type PaginationResponse<T = any> = {
   current_page: number;
@@ -22,5 +28,6 @@ export type PaginationResponse<T = any> = {
   total_current_page_items: number;
   total_page: number;
   total_page_items: number;
-  table_header_list: TableHeaderList;
+  table_header_list: TableHeader[];
+  table_summary_data?: TableSummary[];
 };

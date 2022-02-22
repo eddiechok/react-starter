@@ -10,7 +10,7 @@ const AlertDialogContext = createContext<
 
 export const useAlert = () => useContext(AlertDialogContext);
 
-export const AlertDialogProvider: React.FC = ({ children }) => {
+const AlertDialogProvider: React.FC = ({ children }) => {
   const { present, dismiss, isOpen } = useToggle();
   const [alertProps, setAlertProps] = useState<AlertSetup>({
     confirmButton: {}
@@ -34,3 +34,5 @@ export const AlertDialogProvider: React.FC = ({ children }) => {
     </>
   );
 };
+
+export default AlertDialogProvider;

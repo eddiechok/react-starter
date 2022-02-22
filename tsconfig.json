@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "esnext",
     "lib": [
       "dom",
@@ -20,12 +24,12 @@
     "jsx": "react",
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
   },
   "include": [
     "src"
   ],
   "exclude": [
     "node_modules",
-  ]
+  ],
 }

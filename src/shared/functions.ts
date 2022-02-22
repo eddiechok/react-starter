@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { JSEncrypt } from 'jsencrypt';
+import { UseBaseQueryResult } from 'react-query';
 import { HttpResponse } from '../http/http.model';
 // import SHA256 from "crypto-js/sha256";
 import commonLabel from '../translation/commonLabel';
@@ -259,3 +260,16 @@ export const convertObjectToFormData = (obj: Record<string, any>) => {
 export const getRandomInteger = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
+
+export const reloadQueries = (...queryResults: UseBaseQueryResult[]) => {
+  queryResults.map((queryResult) => {
+    queryResult.remove();
+    queryResult.refetch();
+  });
+};
+
+export const isQueriesLoading = (...queryResults: UseBaseQueryResult[]) =>
+  queryResults.reduce((acc, cur) => acc || cur.isLoading, false);
+
+export const hasQueriesData = (...queryResults: UseBaseQueryResult[]) =>
+  queryResults.reduce((acc, cur) => acc && !!cur.data, true);

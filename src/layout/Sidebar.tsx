@@ -1,8 +1,8 @@
 import { Box, Drawer, List, Toolbar } from '@mui/material';
 import React, { Fragment, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAlert } from '../contexts/AlertDialogContext';
-import { useApp } from '../contexts/AppContext';
+import { useAlert } from '../providers/AlertDialogProvider';
+import { useApp } from '../providers/AppProvider';
 import appRoutes from '../routes/app-routes';
 import { DRAWER_WIDTH } from '../shared/constants';
 import { ToggleProps } from '../shared/type';

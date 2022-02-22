@@ -9,7 +9,7 @@ const LoadingContext = createContext<[() => void, () => void]>([
 
 export const useLoading = () => useContext(LoadingContext);
 
-export const LoadingProvider: React.FC = ({ children }) => {
+const LoadingProvider: React.FC = ({ children }) => {
   const [countLoading, setCountLoading] = useState(0);
   const isMutating = useIsMutating({
     // // exclude queries that add loading
@@ -33,3 +33,5 @@ export const LoadingProvider: React.FC = ({ children }) => {
     </LoadingContext.Provider>
   );
 };
+
+export default LoadingProvider;

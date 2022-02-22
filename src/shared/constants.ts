@@ -13,3 +13,7 @@ export const defaultDateRange: DateRange = {
 };
 
 export const DRAWER_WIDTH = 260;
+
+export const HAS_SIDEBAR = true;
+
+export const FLOATING_LABEL = false;

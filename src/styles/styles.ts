@@ -1,6 +1,7 @@
+import { Theme } from '@mui/material';
 import { SxProps } from '@mui/system/styleFunctionSx';
 
-const commonAspectRatio: SxProps = {
+const commonAspectRatio: SxProps<Theme> = {
   position: 'relative',
   '& > *': {
     position: 'absolute',
@@ -32,7 +33,7 @@ export const aspectRatio = {
 //   })
 // };
 
-export const truncateSx: SxProps = {
+export const truncateSx: SxProps<Theme> = {
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis'

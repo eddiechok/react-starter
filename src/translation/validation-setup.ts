@@ -69,7 +69,11 @@ Yup.setLocale({
   string: {
     email: (data: any) => ({ key: commonLabel.invalid_email, data }),
     min: (data: any) => ({ key: commonLabel.min_MIN_char, data }),
-    max: (data: any) => ({ key: commonLabel.max_MAX_char, data })
+    max: (data: any) => ({ key: commonLabel.max_MAX_char, data }),
+    length: (data: any) => ({
+      key: commonLabel.LABEL_must_be_exactly_LENGTH_characters,
+      data
+    })
     // matches: (data) => ({ key: commonLabel.invalid_TYPE_format, data }),
   },
   number: {
@@ -173,7 +177,7 @@ Yup.addMethod(Yup.string, 'password', function () {
 });
 
 Yup.addMethod(Yup.string, 'secondaryPassword', function () {
-  return this.optionalMin(6).max(15);
+  return this.length(6);
 });
 
 Yup.addMethod(Yup.string, 'tradingPassword', function () {

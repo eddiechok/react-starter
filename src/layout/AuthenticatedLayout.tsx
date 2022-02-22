@@ -2,7 +2,7 @@ import { Box, Toolbar } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router';
 import useToggle from '../hooks/useToggle';
-import { DRAWER_WIDTH } from '../shared/constants';
+import { DRAWER_WIDTH, HAS_SIDEBAR } from '../shared/constants';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
@@ -12,12 +12,14 @@ const AuthenticatedLayout = () => {
   return (
     <Box sx={{ display: 'flex', height: 1 }}>
       <Header present={present} />
-      <Box
-        component="nav"
-        sx={{ width: { lg: DRAWER_WIDTH }, flexShrink: { sm: 0 } }}
-      >
-        <Sidebar isOpen={isOpen} dismiss={dismiss} />
-      </Box>
+      {HAS_SIDEBAR && (
+        <Box
+          component="nav"
+          sx={{ width: { lg: DRAWER_WIDTH }, flexShrink: { sm: 0 } }}
+        >
+          <Sidebar isOpen={isOpen} dismiss={dismiss} />
+        </Box>
+      )}
       <Box
         component="main"
         sx={{

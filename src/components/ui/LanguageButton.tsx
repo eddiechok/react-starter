@@ -1,4 +1,4 @@
-import { InputBase } from '@mui/material';
+import { Box, InputBase, Typography } from '@mui/material';
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
@@ -15,17 +15,17 @@ const LanguageButton = (props: LanguageButtonProps) => {
   const languages = useGetLanguages();
   const options = useMemo<SelectOption[] | undefined>(
     () =>
-      languages.data?.map((lang) => ({ title: lang.name, value: lang.locale })),
+      languages.data?.map((lang) => ({
+        img: lang.flag_url,
+        title: lang.name,
+        value: lang.locale
+      })),
     [languages.data]
   );
 
   const changeLang = (lang: string) => {
     i18n.changeLanguage(lang).then(() => {
-      queryClient.invalidateQueries({
-        predicate: (query) => {
-          return query.isStaleByTime(Infinity); // do not refetch queries that is stale for Infinity
-        }
-      });
+      queryClient.invalidateQueries();
     });
   };
 
@@ -35,6 +35,24 @@ const LanguageButton = (props: LanguageButtonProps) => {
       onChange={(e) => changeLang(e.target.value as string)}
       input={<InputBase />} // remove border
       options={options}
+      renderValue={(value) => (
+        <Box
+          sx={{
+            display: 'flex',
+            gap: 2
+          }}
+        >
+          <img
+            src={
+              languages.data?.find((lang) => lang.locale === value)?.flag_url
+            }
+            width="25px"
+          />
+          <Typography variant="body1" color="text.primary">
+            {languages.data?.find((lang) => lang.locale === value)?.name}
+          </Typography>
+        </Box>
+      )}
       {...props}
       sx={{ color: (theme) => theme.palette.primary.contrastText, ...props.sx }}
     />

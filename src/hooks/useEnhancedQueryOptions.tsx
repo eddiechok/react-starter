@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { UseQueryOptions } from 'react-query';
-import { useApp } from '../contexts/AppContext';
-import { useToast } from '../contexts/ToastContext';
+import { useApp } from '../providers/AppProvider';
+import { useToast } from '../providers/ToastProvider';
 import commonLabel from '../translation/commonLabel';
 
 const useEnhancedQueryOptions = <

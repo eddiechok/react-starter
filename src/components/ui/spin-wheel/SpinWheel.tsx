@@ -1,7 +1,7 @@
+import { getRandomInteger } from '@/shared/functions';
 import { Box, BoxProps } from '@mui/material';
 import { SxProps } from '@mui/system/styleFunctionSx';
 import React, { PropsWithChildren, useEffect, useMemo, useState } from 'react';
-import { getRandomInteger } from '../../../shared/functions';
 import classes from './SpinWheel.module.scss';
 
 const getRandomDegreeByIndex = (index: number, dataLength: number) => {

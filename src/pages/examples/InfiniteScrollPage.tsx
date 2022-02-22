@@ -1,8 +1,8 @@
 import { List, ListItem, ListItemText } from '@mui/material';
 //@ts-ignore
 import React, { useState } from 'react';
-import DataLoader from '../../components/DataLoader';
-import DataWrapper from '../../components/DataWrapper';
+import DataLoader from '../../components/ui/DataLoader';
+import DataWrapper from '../../components/ui/DataWrapper';
 import AppContainer from '../../layout/AppContainer';
 
 const InfiniteScrollPage = () => {
@@ -10,15 +10,18 @@ const InfiniteScrollPage = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchMoreData = () => {
-    if (items.length >= 200) {
-      setHasMore(false);
-      return;
-    }
-    // a fake async api call like which sends
-    // 20 more records in .5 secs
-    setTimeout(() => {
-      setItems((items) => items.concat(Array.from({ length: 20 })));
-    }, 500);
+    return new Promise<void>((resolve) => {
+      if (items.length >= 200) {
+        setHasMore(false);
+        return;
+      }
+      // a fake async api call like which sends
+      // 20 more records in .5 secs
+      setTimeout(() => {
+        setItems((items) => items.concat(Array.from({ length: 20 })));
+        resolve();
+      }, 500);
+    });
   };
 
   return (

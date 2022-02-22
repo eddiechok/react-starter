@@ -13,10 +13,10 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 import useGetSettingStatus from '../api/get/useGetSettingStatus';
 import LanguageButton from '../components/ui/LanguageButton';
-import { useApp } from '../contexts/AppContext';
 import useCustomNavigate from '../hooks/useCustomNavigate';
+import { useApp } from '../providers/AppProvider';
 import appRoutes from '../routes/app-routes';
-import { DRAWER_WIDTH } from '../shared/constants';
+import { DRAWER_WIDTH, HAS_SIDEBAR } from '../shared/constants';
 import { ToggleProps } from '../shared/type';
 import { truncateSx } from '../styles/styles';
 
@@ -61,7 +61,7 @@ const Header = ({ title, present, ...props }: HeaderProps) => {
       }}
     >
       <Toolbar>
-        {isAuthenticated && (
+        {HAS_SIDEBAR && isAuthenticated && (
           <IconButton
             size="large"
             edge="start"

@@ -7,6 +7,7 @@ type Language = {
   id: string;
   locale: string;
   name: string;
+  flag_url: string;
 };
 
 const useGetLanguages = () => {

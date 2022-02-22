@@ -12,7 +12,7 @@ const SecondaryPasswordDialogContext = createContext<
 
 export const useSecPwDialog = () => useContext(SecondaryPasswordDialogContext);
 
-export const SecondaryPasswordDialogProvider: React.FC = ({ children }) => {
+const SecondaryPasswordDialogProvider: React.FC = ({ children }) => {
   const { present, dismiss, isOpen } = useToggle();
   const [handleSubmit, setHandleSubmit] = useState<(password: string) => any>();
 
@@ -38,3 +38,5 @@ export const SecondaryPasswordDialogProvider: React.FC = ({ children }) => {
     </>
   );
 };
+
+export default SecondaryPasswordDialogProvider;

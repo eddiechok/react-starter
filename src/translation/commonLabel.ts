@@ -33,7 +33,9 @@ const commonLabel = {
   date: 'date',
   action_cannot_be_reverted: 'action_cannot_be_reverted',
   sign_out: 'sign_out',
-  are_you_sure_to_sign_out: 'are_you_sure_to_sign_out'
+  are_you_sure_to_sign_out: 'are_you_sure_to_sign_out',
+  LABEL_must_be_exactly_LENGTH_characters:
+    'LABEL_must_be_exactly_LENGTH_characters'
 };
 
 export default commonLabel;

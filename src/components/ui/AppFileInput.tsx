@@ -1,11 +1,14 @@
 import { UploadFile } from '@mui/icons-material';
 import {
+  Box,
   IconButton,
   InputAdornment,
+  InputLabel,
   TextField,
   TextFieldProps
 } from '@mui/material';
 import React, { useMemo, useRef } from 'react';
+import { FLOATING_LABEL } from '../../shared/constants';
 
 export type AppFileInputProps = TextFieldProps & {
   fileInputProps: React.DetailedHTMLProps<
@@ -13,11 +16,15 @@ export type AppFileInputProps = TextFieldProps & {
     HTMLInputElement
   >;
   fileValue?: FileList | null;
+  floating?: boolean;
 };
 
 const AppFileInput = ({
   fileInputProps,
   fileValue,
+  floating = FLOATING_LABEL,
+  required,
+  label,
   ...props
 }: AppFileInputProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -35,7 +42,12 @@ const AppFileInput = ({
   );
 
   return (
-    <>
+    <Box>
+      {!floating && label && (
+        <InputLabel required={required} sx={{ mb: 2 }}>
+          {label}
+        </InputLabel>
+      )}
       <TextField
         value={fileNames}
         placeholder="No File Chosen"
@@ -55,9 +67,13 @@ const AppFileInput = ({
           readOnly: true,
           ...props.InputProps
         }}
+        InputLabelProps={{
+          required: floating && required,
+          ...props.InputLabelProps
+        }}
       />
       <input type="file" hidden ref={inputRef} {...fileInputProps} />
-    </>
+    </Box>
   );
 };
 

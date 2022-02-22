@@ -2,7 +2,7 @@ import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import React, { PropsWithChildren } from 'react';
 import { useTranslation } from 'react-i18next';
-import commonLabel from '../translation/commonLabel';
+import commonLabel from '../../translation/commonLabel';
 
 type DataWrapperProps = PropsWithChildren<{
   isLoading: boolean;

@@ -10,12 +10,7 @@ type FormTextFieldProps = TextFieldProps &
     dp?: number;
   };
 
-const FormTextField = ({
-  name,
-  msgLabel,
-  required,
-  ...props
-}: FormTextFieldProps) => {
+const FormTextField = ({ name, msgLabel, ...props }: FormTextFieldProps) => {
   const { control } = useFormContext();
 
   const errorMessage = useErrorMessage({
@@ -35,10 +30,6 @@ const FormTextField = ({
             error={!!errorMessage}
             {...field}
             {...props}
-            InputLabelProps={{
-              required,
-              ...props.InputLabelProps
-            }}
           />
         );
       }}

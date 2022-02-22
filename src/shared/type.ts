@@ -10,6 +10,8 @@ export type DateRange = {
 };
 
 export type SelectOption = {
+  icon?: React.ReactNode;
+  img?: string;
   title: string;
   value: string;
 };

@@ -16,9 +16,9 @@ import usePostLogin, { LoginParams } from '../../api/post/usePostLogin';
 import Form from '../../components/hook-form/Form';
 import FormTextField from '../../components/hook-form/FormTextField';
 import LanguageButton from '../../components/ui/LanguageButton';
-import { useApp } from '../../contexts/AppContext';
 import useCustomNavigate from '../../hooks/useCustomNavigate';
 import AppContainer from '../../layout/AppContainer';
+import { useApp } from '../../providers/AppProvider';
 import appRoutes from '../../routes/app-routes';
 import { Yup } from '../../shared/constants';
 import commonLabel from '../../translation/commonLabel';
@@ -73,19 +73,21 @@ const LoginPage = () => {
             title={t(commonLabel.login)}
             subheader="Login to dashboard"
           />
-          <CardContent sx={{ textAlign: 'center' }}>
+          <CardContent>
             <Form methods={methods} onSubmit={onSubmit}>
               <Stack spacing={4}>
                 <FormTextField
                   name="username"
                   label={t(commonLabel.username)}
                   required
+                  fullWidth
                 />
                 <FormTextField
                   name="password"
                   label={t(commonLabel.password)}
                   type="password"
                   required
+                  fullWidth
                 />
                 <Stack direction="row" spacing={4}>
                   <Button variant="contained" color="primary" type="submit">
@@ -94,7 +96,7 @@ const LoginPage = () => {
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => navigate(appRoutes.auth.register())}
+                    onClick={() => navigate(appRoutes.auth.register)}
                   >
                     {t(commonLabel.sign_up)}
                   </Button>

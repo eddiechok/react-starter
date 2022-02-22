@@ -1,5 +1,12 @@
-import { Alert, AlertColor, Snackbar, SnackbarProps } from '@mui/material';
-import React, { createContext, useContext, useState } from 'react';
+import {
+  Alert,
+  AlertColor,
+  Snackbar,
+  SnackbarProps,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 import useToggle from '../hooks/useToggle';
 
 type ToastProps = SnackbarProps & {
@@ -7,26 +14,34 @@ type ToastProps = SnackbarProps & {
 };
 
 const ToastContext = createContext<[(props?: ToastProps) => void, () => void]>([
-  () => {},
-  () => {}
+  () => void 0,
+  () => void 0
 ]);
 
 export const useToast = () => useContext(ToastContext);
 
-export const ToastProvider: React.FC = ({ children }) => {
+const ToastProvider: React.FC = ({ children }) => {
   const { isOpen, present, dismiss } = useToggle();
   const [snackbarProps, setSnackbarProps] = useState<ToastProps>();
+  const theme = useTheme();
+  const isBigScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
-  const onOpen = (props?: ToastProps) => {
-    setSnackbarProps(props);
-    present();
-  };
+  const onOpen = useCallback(
+    (props?: ToastProps) => {
+      setSnackbarProps(props);
+      present();
+    },
+    [present]
+  );
 
   return (
     <ToastContext.Provider value={[onOpen, dismiss]}>
       {children}
       <Snackbar
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: isBigScreen ? 'left' : 'center'
+        }}
         open={isOpen}
         onClose={dismiss}
         autoHideDuration={5000}
@@ -43,3 +58,5 @@ export const ToastProvider: React.FC = ({ children }) => {
     </ToastContext.Provider>
   );
 };
+
+export default ToastProvider;

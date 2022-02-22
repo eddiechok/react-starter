@@ -1,11 +1,12 @@
 const appRoutes = {
   auth: {
     login: '/',
-    register: ({
+    register: '/register',
+    register_with_referral: ({
       referralCode = '',
       path
     }: { referralCode?: string; path?: boolean } | undefined = {}) => {
-      return `/register/${path ? ':referralCode?' : referralCode}`;
+      return `/register/${path ? ':referralCode' : referralCode}`;
     },
     forget_password: '/forget-password'
   },

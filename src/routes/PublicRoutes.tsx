@@ -13,7 +13,11 @@ const publicRoutes: IRoute[] = [
     component: LoginPage
   },
   {
-    path: appRoutes.auth.register({ path: true }),
+    path: appRoutes.auth.register,
+    component: SignupPage
+  },
+  {
+    path: appRoutes.auth.register_with_referral({ path: true }),
     component: SignupPage
   },
   {

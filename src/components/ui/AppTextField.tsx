@@ -1,19 +1,23 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {
+  Box,
   IconButton,
   InputAdornment,
+  InputLabel,
   TextField,
   TextFieldProps
 } from '@mui/material';
 import React, { useState } from 'react';
 import useDp from '../../hooks/useDp';
+import { FLOATING_LABEL } from '../../shared/constants';
 
 type AppTextFieldProps = TextFieldProps & {
   dp?: number;
+  floating?: boolean;
 };
 
 const AppTextField = React.forwardRef<HTMLDivElement | null, AppTextFieldProps>(
-  ({ type, dp, ...props }, ref) => {
+  ({ type, dp, label, floating = FLOATING_LABEL, required, ...props }, ref) => {
     const [inputType, setInputType] = useState(type);
     const inputRef = useDp(dp);
 
@@ -24,26 +28,38 @@ const AppTextField = React.forwardRef<HTMLDivElement | null, AppTextFieldProps>(
     };
 
     return (
-      <TextField
-        type={inputType}
-        InputProps={{
-          endAdornment: type === 'password' && (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={changeInputType}
-                onMouseDown={(e) => e.preventDefault()}
-                edge="end"
-              >
-                {inputType === 'text' ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          )
-        }}
-        inputRef={inputRef}
-        ref={ref}
-        {...props}
-      />
+      <Box>
+        {!floating && label && (
+          <InputLabel required={required} sx={{ mb: 2 }}>
+            {label}
+          </InputLabel>
+        )}
+        <TextField
+          type={inputType}
+          label={floating && label}
+          InputProps={{
+            endAdornment: type === 'password' && (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={changeInputType}
+                  onMouseDown={(e) => e.preventDefault()}
+                  edge="end"
+                >
+                  {inputType === 'text' ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            )
+          }}
+          inputRef={inputRef}
+          ref={ref}
+          {...props}
+          InputLabelProps={{
+            required: floating && required,
+            ...props.InputLabelProps
+          }}
+        />
+      </Box>
     );
   }
 );

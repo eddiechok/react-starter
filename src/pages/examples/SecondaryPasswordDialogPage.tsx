@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import { useSecPwDialog } from '../../contexts/SecondaryPasswordDialogContext';
 import AppContainer from '../../layout/AppContainer';
+import { useSecPwDialog } from '../../providers/SecondaryPasswordDialogProvider';
 
 const SecondaryPasswordDialogPage = () => {
   const [presentSecPw] = useSecPwDialog();

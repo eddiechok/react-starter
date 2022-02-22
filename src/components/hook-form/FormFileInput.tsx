@@ -6,12 +6,7 @@ import AppFileInput, { AppFileInputProps } from '../ui/AppFileInput';
 
 export type FormFileInputProps = AppFileInputProps & FormInput;
 
-const FormFileInput = ({
-  name,
-  msgLabel,
-  required,
-  ...props
-}: FormFileInputProps) => {
+const FormFileInput = ({ name, msgLabel, ...props }: FormFileInputProps) => {
   const { control, setValue } = useFormContext();
 
   const errorMessage = useErrorMessage({
@@ -33,10 +28,6 @@ const FormFileInput = ({
           fileInputProps={{
             onChange: (e) => setValue(name, e.target.files),
             ...props.fileInputProps
-          }}
-          InputLabelProps={{
-            required,
-            ...props.InputLabelProps
           }}
         />
       )}
