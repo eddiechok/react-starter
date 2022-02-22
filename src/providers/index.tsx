@@ -1,6 +1,6 @@
+import { queryClient } from '@/config/query-client';
 import React from 'react';
 import { QueryClientProvider } from 'react-query';
-import { queryClient } from '../config/query-client';
 import AlertDialogProvider from './AlertDialogProvider';
 import AppContextProvider from './AppProvider';
 import LoadingProvider from './LoadingProvider';

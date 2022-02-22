@@ -1,9 +1,9 @@
+import DataLoader from '@/components/ui/DataLoader';
+import DataWrapper from '@/components/ui/DataWrapper';
+import AppContainer from '@/layout/AppContainer';
 import { List, ListItem, ListItemText } from '@mui/material';
 //@ts-ignore
 import React, { useState } from 'react';
-import DataLoader from '../../components/ui/DataLoader';
-import DataWrapper from '../../components/ui/DataWrapper';
-import AppContainer from '../../layout/AppContainer';
 
 const InfiniteScrollPage = () => {
   const [items, setItems] = useState(Array.from({ length: 20 }));

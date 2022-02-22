@@ -1,6 +1,6 @@
+import AppContainer from '@/layout/AppContainer';
 import { Typography } from '@mui/material';
 import React from 'react';
-import AppContainer from '../../layout/AppContainer';
 
 const ForgetPasswordPage = () => {
   return (

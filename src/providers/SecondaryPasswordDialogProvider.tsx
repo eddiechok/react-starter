@@ -1,6 +1,6 @@
+import SecondaryPasswordDialog from '@/components/ui/secondary-password-dialog/SecondaryPasswordDialog';
+import useToggle from '@/hooks/useToggle';
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import SecondaryPasswordDialog from '../components/ui/secondary-password-dialog/SecondaryPasswordDialog';
-import useToggle from '../hooks/useToggle';
 
 type SecondaryPasswordDialogSetup = {
   onSuccess: (password: string) => any;

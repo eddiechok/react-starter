@@ -1,8 +1,8 @@
+import useToggle from '@/hooks/useToggle';
+import { DRAWER_WIDTH, HAS_SIDEBAR } from '@/shared/constants';
 import { Box, Toolbar } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router';
-import useToggle from '../hooks/useToggle';
-import { DRAWER_WIDTH, HAS_SIDEBAR } from '../shared/constants';
 import Header from './Header';
 import Sidebar from './Sidebar';
 

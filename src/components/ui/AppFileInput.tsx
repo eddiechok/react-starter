@@ -1,3 +1,4 @@
+import { FLOATING_LABEL } from '@/shared/constants';
 import { UploadFile } from '@mui/icons-material';
 import {
   Box,
@@ -8,7 +9,6 @@ import {
   TextFieldProps
 } from '@mui/material';
 import React, { useMemo, useRef } from 'react';
-import { FLOATING_LABEL } from '../../shared/constants';
 
 export type AppFileInputProps = TextFieldProps & {
   fileInputProps: React.DetailedHTMLProps<

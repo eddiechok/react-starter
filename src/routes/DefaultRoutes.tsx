@@ -1,6 +1,6 @@
+import MemberGateway from '@/pages/member-gateway/MemberGateway';
 import React from 'react';
 import { Route } from 'react-router-dom';
-import MemberGateway from '../pages/member-gateway/MemberGateway';
 import appRoutes from './app-routes';
 import { IRoute } from './route.model';
 

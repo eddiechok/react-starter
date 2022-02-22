@@ -1,3 +1,11 @@
+import useGetSettingStatus from '@/api/get/useGetSettingStatus';
+import LanguageButton from '@/components/ui/LanguageButton';
+import useCustomNavigate from '@/hooks/useCustomNavigate';
+import { useApp } from '@/providers/AppProvider';
+import appRoutes from '@/routes/app-routes';
+import { DRAWER_WIDTH, HAS_SIDEBAR } from '@/shared/constants';
+import { ToggleProps } from '@/shared/type';
+import { truncateSx } from '@/styles/styles';
 import { Menu as MenuIcon, Person } from '@mui/icons-material';
 import {
   AppBar,
@@ -11,14 +19,6 @@ import {
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
-import useGetSettingStatus from '../api/get/useGetSettingStatus';
-import LanguageButton from '../components/ui/LanguageButton';
-import useCustomNavigate from '../hooks/useCustomNavigate';
-import { useApp } from '../providers/AppProvider';
-import appRoutes from '../routes/app-routes';
-import { DRAWER_WIDTH, HAS_SIDEBAR } from '../shared/constants';
-import { ToggleProps } from '../shared/type';
-import { truncateSx } from '../styles/styles';
 
 export type HeaderProps = AppBarProps &
   Pick<ToggleProps, 'present'> & {

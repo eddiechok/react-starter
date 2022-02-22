@@ -1,8 +1,8 @@
+import AppFileInput, { AppFileInputProps } from '@/components/ui/AppFileInput';
+import useErrorMessage from '@/hooks/useErrorMessage';
+import { FormInput } from '@/shared/type';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import useErrorMessage from '../../hooks/useErrorMessage';
-import { FormInput } from '../../shared/type';
-import AppFileInput, { AppFileInputProps } from '../ui/AppFileInput';
 
 export type FormFileInputProps = AppFileInputProps & FormInput;
 

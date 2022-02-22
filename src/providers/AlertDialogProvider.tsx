@@ -1,6 +1,6 @@
+import AlertDialog, { AlertDialogProps } from '@/components/ui/AlertDialog';
+import useToggle from '@/hooks/useToggle';
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import AlertDialog, { AlertDialogProps } from '../components/ui/AlertDialog';
-import useToggle from '../hooks/useToggle';
 
 export type AlertSetup = Omit<AlertDialogProps, 'open' | 'handleClose'>;
 

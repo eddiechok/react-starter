@@ -1,7 +1,9 @@
+import AppImageInput, {
+  AppImageInputProps
+} from '@/components/ui/AppImageInput';
+import { FormInput } from '@/shared/type';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { FormInput } from '../../shared/type';
-import AppImageInput, { AppImageInputProps } from '../ui/AppImageInput';
 import FormError from './FormError';
 
 export type FormImageInputProps = AppImageInputProps & FormInput;

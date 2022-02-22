@@ -1,3 +1,5 @@
+import { SYSTEM_DATE_FORMAT } from '@/shared/constants';
+import commonLabel from '@/translation/commonLabel';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker, { DatePickerProps } from '@mui/lab/DatePicker';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -8,8 +10,6 @@ import zhLocale from 'date-fns/locale/zh-CN';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Optional } from 'utility-types';
-import { SYSTEM_DATE_FORMAT } from '../../shared/constants';
-import commonLabel from '../../translation/commonLabel';
 
 const localeMap: any = {
   en: enLocale,

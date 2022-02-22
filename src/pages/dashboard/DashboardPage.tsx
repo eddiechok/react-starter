@@ -1,7 +1,7 @@
+import AppContainer from '@/layout/AppContainer';
 import { Typography } from '@mui/material';
 //@ts-ignore
 import React from 'react';
-import AppContainer from '../../layout/AppContainer';
 
 const DashboardPage = () => {
   return (

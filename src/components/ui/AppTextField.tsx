@@ -1,3 +1,5 @@
+import useDp from '@/hooks/useDp';
+import { FLOATING_LABEL } from '@/shared/constants';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {
   Box,
@@ -8,8 +10,6 @@ import {
   TextFieldProps
 } from '@mui/material';
 import React, { useState } from 'react';
-import useDp from '../../hooks/useDp';
-import { FLOATING_LABEL } from '../../shared/constants';
 
 type AppTextFieldProps = TextFieldProps & {
   dp?: number;

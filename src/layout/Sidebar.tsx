@@ -1,12 +1,12 @@
+import { useAlert } from '@/providers/AlertDialogProvider';
+import { useApp } from '@/providers/AppProvider';
+import appRoutes from '@/routes/app-routes';
+import { DRAWER_WIDTH } from '@/shared/constants';
+import { ToggleProps } from '@/shared/type';
+import commonLabel from '@/translation/commonLabel';
 import { Box, Drawer, List, Toolbar } from '@mui/material';
 import React, { Fragment, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAlert } from '../providers/AlertDialogProvider';
-import { useApp } from '../providers/AppProvider';
-import appRoutes from '../routes/app-routes';
-import { DRAWER_WIDTH } from '../shared/constants';
-import { ToggleProps } from '../shared/type';
-import commonLabel from '../translation/commonLabel';
 import DrawerItem, { DrawerItemProps } from './DrawerItem';
 
 export type SidebarProps = Omit<ToggleProps, 'present'>;

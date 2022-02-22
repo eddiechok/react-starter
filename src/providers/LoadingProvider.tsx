@@ -1,6 +1,6 @@
+import Loading from '@/components/ui/LoadingOverlay';
 import React, { createContext, useCallback, useContext, useState } from 'react';
 import { useIsMutating } from 'react-query';
-import Loading from '../components/ui/LoadingOverlay';
 
 const LoadingContext = createContext<[() => void, () => void]>([
   () => void 0,

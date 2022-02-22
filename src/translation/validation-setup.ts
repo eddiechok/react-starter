@@ -1,6 +1,6 @@
+import { SYSTEM_DATE_FORMAT, Yup } from '@/shared/constants';
 import axios from 'axios';
 import { format } from 'date-fns';
-import { SYSTEM_DATE_FORMAT, Yup } from '../shared/constants';
 import commonLabel from './commonLabel';
 /**
  * Add Custom Method Interface

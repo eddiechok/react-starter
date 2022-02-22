@@ -1,3 +1,8 @@
+import useGetAppVersions from '@/api/get/useGetAppVersion';
+import useGetSettingStatus from '@/api/get/useGetSettingStatus';
+import LoadingOverlay from '@/components/ui/LoadingOverlay';
+import getTheme from '@/config/theme';
+import MaintenancePage from '@/pages/maintenance/MaintenancePage';
 import { Storage } from '@capacitor/storage';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import React, {
@@ -10,11 +15,6 @@ import React, {
   useReducer
 } from 'react';
 import { useQueryClient } from 'react-query';
-import useGetAppVersions from '../api/get/useGetAppVersion';
-import useGetSettingStatus from '../api/get/useGetSettingStatus';
-import LoadingOverlay from '../components/ui/LoadingOverlay';
-import getTheme from '../config/theme';
-import MaintenancePage from '../pages/maintenance/MaintenancePage';
 import { useLoading } from './LoadingProvider';
 
 type AppContextProps = {

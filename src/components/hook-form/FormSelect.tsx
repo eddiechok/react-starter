@@ -1,8 +1,8 @@
+import AppSelect, { AppSelectProps } from '@/components/ui/AppSelect';
+import useErrorMessage from '@/hooks/useErrorMessage';
+import { FormInput } from '@/shared/type';
 import React, { PropsWithChildren } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import useErrorMessage from '../../hooks/useErrorMessage';
-import { FormInput } from '../../shared/type';
-import AppSelect, { AppSelectProps } from '../ui/AppSelect';
 
 type FormSelectProps = PropsWithChildren<AppSelectProps> & FormInput;
 

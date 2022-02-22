@@ -1,8 +1,8 @@
+import commonLabel from '@/translation/commonLabel';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
-import commonLabel from '../../translation/commonLabel';
 
 type DataLoaderProps = {
   hasNextPage?: boolean;

@@ -1,8 +1,8 @@
+import { useApp } from '@/providers/AppProvider';
+import { useToast } from '@/providers/ToastProvider';
+import commonLabel from '@/translation/commonLabel';
 import { useTranslation } from 'react-i18next';
 import { UseMutationOptions } from 'react-query';
-import { useApp } from '../providers/AppProvider';
-import { useToast } from '../providers/ToastProvider';
-import commonLabel from '../translation/commonLabel';
 
 const useEnhancedMutationOptions = <
   A extends any,

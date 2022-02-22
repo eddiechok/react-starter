@@ -1,7 +1,7 @@
+import useEnhancedQueryOptions from '@/hooks/useEnhancedQueryOptions';
+import { checkResponse } from '@/shared/functions';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import useEnhancedQueryOptions from '../../hooks/useEnhancedQueryOptions';
-import { checkResponse } from '../../shared/functions';
 
 type Language = {
   id: string;

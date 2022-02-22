@@ -1,9 +1,9 @@
+import { PaginationResponse } from '@/http/http.model';
+import { useApp } from '@/providers/AppProvider';
+import { useToast } from '@/providers/ToastProvider';
+import commonLabel from '@/translation/commonLabel';
 import { useTranslation } from 'react-i18next';
 import { UseInfiniteQueryOptions } from 'react-query';
-import { PaginationResponse } from '../http/http.model';
-import { useApp } from '../providers/AppProvider';
-import { useToast } from '../providers/ToastProvider';
-import commonLabel from '../translation/commonLabel';
 
 const useEnhancedInfiniteQueryOptions = <
   A extends PaginationResponse<any> = PaginationResponse<any>,

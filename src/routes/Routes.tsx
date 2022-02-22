@@ -1,5 +1,5 @@
+import { useApp } from '@/providers/AppProvider';
 import React from 'react';
-import { useApp } from '../providers/AppProvider';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 

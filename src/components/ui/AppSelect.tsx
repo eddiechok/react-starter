@@ -1,3 +1,6 @@
+import useToggle from '@/hooks/useToggle';
+import { FLOATING_LABEL } from '@/shared/constants';
+import { SelectOption } from '@/shared/type';
 import { Capacitor } from '@capacitor/core';
 import {
   Avatar,
@@ -14,9 +17,6 @@ import {
   SelectProps
 } from '@mui/material';
 import React, { PropsWithChildren, useMemo } from 'react';
-import useToggle from '../../hooks/useToggle';
-import { FLOATING_LABEL } from '../../shared/constants';
-import { SelectOption } from '../../shared/type';
 
 export type AppSelectProps = PropsWithChildren<SelectProps> & {
   options?: SelectOption[];

@@ -1,3 +1,4 @@
+import { TableHeader, TableSummary } from '@/http/http.model';
 import {
   Table,
   TableBody,
@@ -7,7 +8,6 @@ import {
   TableRow
 } from '@mui/material';
 import React from 'react';
-import { TableHeader, TableSummary } from '../../http/http.model';
 
 export type AppTableProps = TableProps & {
   uniqueKey?: string;

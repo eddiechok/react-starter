@@ -1,7 +1,7 @@
+import { DateRange } from '@/shared/type';
 import { Grid } from '@mui/material';
 import { compareDesc } from 'date-fns';
 import React from 'react';
-import { DateRange } from '../../shared/type';
 import AppDatePicker, { AppDatePickerProps } from './AppDatePicker';
 
 export type AppDateRangePickerProps = {

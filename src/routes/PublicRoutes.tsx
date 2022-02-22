@@ -1,8 +1,8 @@
+import ForgetPasswordPage from '@/pages/auth/ForgetPasswordPage';
+import LoginPage from '@/pages/auth/LoginPage';
+import SignupPage from '@/pages/auth/SignupPage';
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import ForgetPasswordPage from '../pages/auth/ForgetPasswordPage';
-import LoginPage from '../pages/auth/LoginPage';
-import SignupPage from '../pages/auth/SignupPage';
 import appRoutes from './app-routes';
 import { getDefaultRoutes } from './DefaultRoutes';
 import { IRoute } from './route.model';

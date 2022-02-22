@@ -1,3 +1,6 @@
+import Form from '@/components/hook-form/Form';
+import { Yup } from '@/shared/constants';
+import commonLabel from '@/translation/commonLabel';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
@@ -13,9 +16,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import OtpInput from 'react-otp-input';
 import { SchemaOf } from 'yup';
-import { Yup } from '../../../shared/constants';
-import commonLabel from '../../../translation/commonLabel';
-import Form from '../../hook-form/Form';
 import classes from './SecondaryPasswordDialog.module.scss';
 
 type SecondaryPasswordDialogProps = DialogProps & {

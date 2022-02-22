@@ -1,3 +1,4 @@
+import commonLabel from '@/translation/commonLabel';
 import {
   Button,
   Dialog,
@@ -10,7 +11,6 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import commonLabel from '../../translation/commonLabel';
 
 export type AlertDialogProps = DialogProps & {
   handleClose: () => void;

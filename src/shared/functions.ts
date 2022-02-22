@@ -1,9 +1,9 @@
+import { HttpResponse } from '@/http/http.model';
+// import SHA256 from "crypto-js/sha256";
+import commonLabel from '@/translation/commonLabel';
 import { AxiosResponse } from 'axios';
 import { JSEncrypt } from 'jsencrypt';
 import { UseBaseQueryResult } from 'react-query';
-import { HttpResponse } from '../http/http.model';
-// import SHA256 from "crypto-js/sha256";
-import commonLabel from '../translation/commonLabel';
 
 export function getMonthList(
   locales?: string | string[],

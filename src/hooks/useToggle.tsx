@@ -1,5 +1,5 @@
+import { ToggleProps } from '@/shared/type';
 import { useCallback, useState } from 'react';
-import { ToggleProps } from '../shared/type';
 
 type UseToggleReturn = Required<ToggleProps> & {
   toggle: () => void;

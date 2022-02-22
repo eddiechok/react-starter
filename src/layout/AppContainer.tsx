@@ -1,6 +1,6 @@
+import AppRefresher, { AppRefresherProps } from '@/components/ui/AppRefresher';
 import { Container, ContainerProps } from '@mui/material';
 import React from 'react';
-import AppRefresher, { AppRefresherProps } from '../components/ui/AppRefresher';
 
 type AppContainerProps = ContainerProps & AppRefresherProps;
 

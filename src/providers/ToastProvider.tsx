@@ -1,3 +1,4 @@
+import useToggle from '@/hooks/useToggle';
 import {
   Alert,
   AlertColor,
@@ -7,7 +8,6 @@ import {
   useTheme
 } from '@mui/material';
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import useToggle from '../hooks/useToggle';
 
 type ToastProps = SnackbarProps & {
   color?: AlertColor;

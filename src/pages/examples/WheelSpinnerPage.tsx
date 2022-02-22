@@ -1,10 +1,10 @@
+import SpinWheel from '@/components/ui/spin-wheel/SpinWheel';
+import AppContainer from '@/layout/AppContainer';
+import { getRandomInteger } from '@/shared/functions';
+import { truncateSx } from '@/styles/styles';
 import { Person } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 import React, { Reducer, useReducer, useState } from 'react';
-import SpinWheel from '../../components/ui/spin-wheel/SpinWheel';
-import AppContainer from '../../layout/AppContainer';
-import { getRandomInteger } from '../../shared/functions';
-import { truncateSx } from '../../styles/styles';
 
 const bgColor = ['#ff1d1d', '#ffeaca'];
 const dataLength = 12;

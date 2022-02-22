@@ -1,9 +1,9 @@
+import useGetLanguages from '@/api/get/useGetLanguages';
+import { SelectOption } from '@/shared/type';
 import { Box, InputBase, Typography } from '@mui/material';
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
-import useGetLanguages from '../../api/get/useGetLanguages';
-import { SelectOption } from '../../shared/type';
 import AppSelect, { AppSelectProps } from './AppSelect';
 
 type LanguageButtonProps = AppSelectProps;

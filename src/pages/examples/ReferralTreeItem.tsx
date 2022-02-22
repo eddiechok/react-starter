@@ -1,7 +1,7 @@
+import useGetTreeList, { TreeListParams } from '@/api/get/useGetTreeList';
+import AppTreeItem, { AppTreeItemProps } from '@/components/ui/AppTreeItem';
 import React, { useEffect, useState } from 'react';
 import { Optional } from 'utility-types';
-import useGetTreeList, { TreeListParams } from '../../api/get/useGetTreeList';
-import AppTreeItem, { AppTreeItemProps } from '../../components/ui/AppTreeItem';
 
 export type ReferralTreeItemProps = Optional<AppTreeItemProps, 'loadChildren'>;
 

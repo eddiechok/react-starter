@@ -1,9 +1,9 @@
+import AppTextField from '@/components/ui/AppTextField';
+import useErrorMessage from '@/hooks/useErrorMessage';
+import { FormInput } from '@/shared/type';
 import { TextFieldProps } from '@mui/material';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import useErrorMessage from '../../hooks/useErrorMessage';
-import { FormInput } from '../../shared/type';
-import AppTextField from '../ui/AppTextField';
 
 type FormTextFieldProps = TextFieldProps &
   FormInput & {

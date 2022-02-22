@@ -1,7 +1,7 @@
+import useErrorMessage from '@/hooks/useErrorMessage';
+import { FormInput } from '@/shared/type';
 import { FormHelperText, FormHelperTextProps } from '@mui/material';
 import React, { Fragment } from 'react';
-import useErrorMessage from '../../hooks/useErrorMessage';
-import { FormInput } from '../../shared/type';
 
 type FormErrorProps = FormHelperTextProps & FormInput;
 
