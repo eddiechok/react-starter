@@ -107,7 +107,13 @@ const DrawerItem = ({
                 <ListItemText
                   inset={!item.icon}
                   primary={item.title}
-                  sx={{ pr: 4, textTransform: 'uppercase' }}
+                  sx={{ pr: 4 }}
+                  primaryTypographyProps={{
+                    color: 'secondary.contrastText',
+                    sx: {
+                      textTransform: 'uppercase'
+                    }
+                  }}
                 />
               </ListItemButton>
             ))}
