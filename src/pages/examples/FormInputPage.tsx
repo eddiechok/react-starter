@@ -69,8 +69,6 @@ const FormInputPage = () => {
     console.log(values);
   };
 
-  console.log(methods.formState.errors, methods.watch());
-
   return (
     <>
       <AppContainer maxWidth="sm">

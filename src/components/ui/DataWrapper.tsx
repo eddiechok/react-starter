@@ -21,7 +21,15 @@ const DataWrapper = ({
   return (
     <>
       {isLoading ? (
-        <CircularProgress />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            my: 4
+          }}
+        >
+          <CircularProgress />
+        </Box>
       ) : haveData ? (
         children
       ) : (

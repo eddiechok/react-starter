@@ -1,4 +1,3 @@
-import useGetSettingStatus from '@/api/get/useGetSettingStatus';
 import LanguageButton from '@/components/ui/LanguageButton';
 import useCustomNavigate from '@/hooks/useCustomNavigate';
 import { useApp } from '@/providers/AppProvider';
@@ -10,43 +9,20 @@ import { Menu as MenuIcon, Person } from '@mui/icons-material';
 import {
   AppBar,
   AppBarProps,
-  Avatar,
-  Box,
   IconButton,
   Toolbar,
   Typography
 } from '@mui/material';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router';
 
 export type HeaderProps = AppBarProps &
   Pick<ToggleProps, 'present'> & {
     title?: string;
   };
 
-const pathToClose = [
-  appRoutes.member.profile,
-  appRoutes.member.login_password,
-  appRoutes.member.transaction_password
-];
-
 const Header = ({ title, present, ...props }: HeaderProps) => {
   const { isAuthenticated } = useApp();
   const navigate = useCustomNavigate();
-  const location = useLocation();
-  const { t } = useTranslation();
-  const settingStatus = useGetSettingStatus();
-
-  const profileHandler = () => {
-    pathToClose.find((pathname) => pathname === location.pathname)
-      ? navigate(-1)
-      : navigate(appRoutes.member.profile, {
-          state: {
-            backgroundLocation: location
-          }
-        });
-  };
 
   return (
     <AppBar
@@ -80,30 +56,9 @@ const Header = ({ title, present, ...props }: HeaderProps) => {
           sx={{
             mr: 1
           }}
-          onClick={profileHandler}
+          onClick={() => navigate(appRoutes.member.profile)}
         >
-          <Box
-            sx={
-              {
-                // width: '38px',
-                // height: '38px',
-                // p: '3px'
-                // background: `url(${ProfileBg}) no-repeat center / cover`
-              }
-            }
-          >
-            {/* <Avatar
-              sx={{ width: 1, height: 1, borderRadius: '999px' }}
-              src={
-                (settingStatus.data?.avatar !== '' &&
-                  settingStatus.data?.avatar) ||
-                ProfileDefIcon
-              }
-            /> */}
-            <Avatar>
-              <Person />
-            </Avatar>
-          </Box>
+          <Person />
         </IconButton>
         <LanguageButton />
       </Toolbar>

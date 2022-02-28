@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type ToggleProps = {
   isOpen: boolean;
   present?: () => void;
@@ -14,6 +16,7 @@ export type SelectOption = {
   img?: string;
   title: string;
   value: string;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 export type FormInput = {

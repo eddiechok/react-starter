@@ -17,7 +17,7 @@ export type DrawerItemProps = {
   title?: string;
   link?: string;
   linkOptions?: NavigateOptions;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   icon?: React.FC;
   children?: DrawerItemProps[];
   closeDrawer?: () => void;
@@ -46,21 +46,31 @@ const DrawerItem = ({
   const { isOpen, toggle } = useToggle();
   const location = useLocation();
 
-  const click = () => {
-    if (onClick) {
-      onClick();
-    } else if (children) {
+  const click = (
+    event: React.MouseEvent<HTMLElement>,
+    drawerItem: DrawerItemProps
+  ) => {
+    if (drawerItem.onClick) {
+      drawerItem.onClick(event);
+    } else if (drawerItem.children) {
       toggle();
-    } else if (link) {
+    } else if (drawerItem.link) {
       closeDrawer?.();
-      navigate(link, linkOptions);
+      navigate(drawerItem.link, drawerItem.linkOptions);
     }
   };
 
   return (
     <Fragment>
       <ListItemButton
-        onClick={click}
+        onClick={(e) =>
+          click(e, {
+            onClick,
+            children,
+            link,
+            linkOptions
+          })
+        }
         selected={location.pathname === link}
         sx={selectedSx}
       >
@@ -70,6 +80,7 @@ const DrawerItem = ({
         <ListItemText
           primary={title}
           primaryTypographyProps={{
+            color: 'secondary.contrastText',
             sx: {
               textTransform: 'uppercase'
             }
@@ -85,10 +96,7 @@ const DrawerItem = ({
               <ListItemButton
                 key={i}
                 selected={location.pathname === item.link}
-                onClick={() => {
-                  closeDrawer?.();
-                  item.link && navigate(item.link, item.linkOptions);
-                }}
+                onClick={(e) => click(e, item)}
                 sx={{ pl: 8, ...selectedSx }}
               >
                 <ListItemIcon

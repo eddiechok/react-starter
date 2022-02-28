@@ -23,6 +23,21 @@ const appRoutes = {
     form_input: '/examples/form-input',
     tree_list: '/examples/tree-list',
     wheel_spinner: '/examples/wheel-spinner'
+  },
+  wallet: {
+    deposit: ({
+      from = '',
+      to = '',
+      path
+    }: { from?: string; to?: string; path?: boolean } | undefined = {}) => {
+      return `/wallet/deposit/${path ? ':from' : from}/${path ? ':to' : to}`;
+    },
+    withdrawal: ({
+      from = '',
+      path
+    }: { from?: string; path?: boolean } | undefined = {}) => {
+      return `/wallet/withdrawal/${path ? ':from' : from}`;
+    }
   }
 };
 

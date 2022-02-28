@@ -1,11 +1,15 @@
+import useGetWalletBalance from '@/api/get/useGetWalletBalance';
+import AppDropdown from '@/components/ui/AppDropdown';
+import useCustomNavigate from '@/hooks/useCustomNavigate';
+import useDropdown from '@/hooks/useDropdown';
 import { useAlert } from '@/providers/AlertDialogProvider';
 import { useApp } from '@/providers/AppProvider';
 import appRoutes from '@/routes/app-routes';
 import { DRAWER_WIDTH } from '@/shared/constants';
-import { ToggleProps } from '@/shared/type';
+import { SelectOption, ToggleProps } from '@/shared/type';
 import commonLabel from '@/translation/commonLabel';
 import { Box, Drawer, List, Toolbar } from '@mui/material';
-import React, { Fragment, useMemo } from 'react';
+import React, { Fragment, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import DrawerItem, { DrawerItemProps } from './DrawerItem';
 
@@ -15,6 +19,53 @@ const Sidebar = ({ isOpen, dismiss }: SidebarProps) => {
   const { t } = useTranslation();
   const { logout } = useApp();
   const [presentAlert] = useAlert();
+  const navigate = useCustomNavigate();
+  const walletBalance = useGetWalletBalance({ refetchOnMount: false });
+  const wallet = useMemo(() => walletBalance.data?.[0], [walletBalance.data]);
+  const depositDropdown = useDropdown();
+
+  const onDeposit = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      if (wallet) {
+        if (wallet.setup.blockchain_deposit.length > 1) {
+          depositDropdown.present(event);
+        } else {
+          navigate(
+            appRoutes.wallet.deposit({
+              from: wallet.setup.blockchain_deposit[0].ewallet_type_code,
+              to: wallet.ewallet_type_code
+            }),
+            { isModal: true }
+          );
+        }
+      }
+    },
+    [depositDropdown, navigate, wallet]
+  );
+
+  const depositOptions = useMemo<SelectOption[]>(
+    () =>
+      wallet?.setup.blockchain_deposit.map((bc) => ({
+        title: bc.ewallet_type_name,
+        value: bc.ewallet_type_code,
+        onClick: () => {
+          dismiss?.();
+          navigate(
+            appRoutes.wallet.deposit({
+              from: bc.ewallet_type_code,
+              to: wallet?.ewallet_type_code
+            }),
+            { isModal: true }
+          );
+        }
+      })) || [],
+    [
+      dismiss,
+      navigate,
+      wallet?.ewallet_type_code,
+      wallet?.setup.blockchain_deposit
+    ]
+  );
 
   const drawerList = useMemo<DrawerItemProps[]>(
     () => [
@@ -46,9 +97,22 @@ const Sidebar = ({ isOpen, dismiss }: SidebarProps) => {
             link: appRoutes.examples.wheel_spinner
           }
         ]
+      },
+      {
+        title: 'Wallet',
+        children: [
+          {
+            title: 'Deposit',
+            onClick: onDeposit
+          },
+          {
+            title: 'Withdrawal',
+            link: appRoutes.wallet.withdrawal({ from: 'USDT' })
+          }
+        ]
       }
     ],
-    [t]
+    [onDeposit]
   );
 
   const drawer = (
@@ -142,6 +206,7 @@ const Sidebar = ({ isOpen, dismiss }: SidebarProps) => {
       >
         {drawer}
       </Drawer>
+      <AppDropdown {...depositDropdown.menuProps} options={depositOptions} />
     </>
   );
 };

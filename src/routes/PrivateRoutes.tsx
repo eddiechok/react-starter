@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/layout/AuthenticatedLayout';
+import AuthenticatedLayout from '@/layout/DefaultAuthenticatedLayout';
 import DashboardPage from '@/pages/dashboard/DashboardPage';
 import FormInputPage from '@/pages/examples/FormInputPage';
 import InfiniteScrollPage from '@/pages/examples/InfiniteScrollPage';
@@ -6,6 +6,8 @@ import SecondaryPasswordDialogPage from '@/pages/examples/SecondaryPasswordDialo
 import TreeListPage from '@/pages/examples/TreeListPage';
 import WheelSpinnerPage from '@/pages/examples/WheelSpinnerPage';
 import ProfilePage from '@/pages/member/ProfilePage';
+import DepositPage from '@/pages/wallet/DepositPage';
+import WithdrawalPage from '@/pages/wallet/WithdrawalPage';
 import React from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import appRoutes from './app-routes';
@@ -40,6 +42,15 @@ const privateRoutes: IRoute[] = [
   {
     path: appRoutes.examples.wheel_spinner,
     component: WheelSpinnerPage
+  },
+  {
+    path: appRoutes.wallet.deposit({ path: true }),
+    component: DepositPage,
+    isModal: true
+  },
+  {
+    path: appRoutes.wallet.withdrawal({ path: true }),
+    component: WithdrawalPage
   }
 ];
 

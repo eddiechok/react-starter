@@ -35,7 +35,19 @@ const commonLabel = {
   sign_out: 'sign_out',
   are_you_sure_to_sign_out: 'are_you_sure_to_sign_out',
   LABEL_must_be_exactly_LENGTH_characters:
-    'LABEL_must_be_exactly_LENGTH_characters'
+    'LABEL_must_be_exactly_LENGTH_characters',
+  copied_to_clipboard: 'copied_to_clipboard',
+  deposit: 'deposit',
+  please_ensure_you_enter_the_correct_blockchain_address:
+    'please_ensure_you_enter_the_correct_blockchain_address',
+  address: 'address',
+  copy_address: 'copy_address',
+  wallet_to: 'wallet_to',
+  withdrawal_to: 'withdrawal_to',
+  enter_address: 'enter_address',
+  amount: 'amount',
+  admin_fee: 'admin_fee',
+  insufficient_balance: 'insufficient_balance'
 };
 
 export default commonLabel;
