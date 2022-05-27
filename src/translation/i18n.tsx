@@ -10,23 +10,29 @@ const i18nextOptions: InitOptions = {
     loadPath: function (lng, ns) {
       return `/locales/${lng}/${ns}.json`;
     },
+    addPath: '/translation/add',
     request: function (_, url, payload, callback) {
-      axios
-        .get(url)
-        .then((res: any) => {
-          const translationObj = {
-            status: res.status,
-            data: JSON.stringify(res.data)
-          };
-          callback(null, translationObj);
-        })
-        .catch(() => {
-          callback(null, {
-            status: 404,
-            data: ''
+      if (url === '/translation/add') {
+        axios.post('/translation/add', payload);
+      } else {
+        axios
+          .get(url)
+          .then((res: any) => {
+            // return JSON stringify data with no error
+            const translationObj = {
+              status: res.status,
+              data: JSON.stringify(res.data)
+            };
+            callback(null, translationObj);
+          })
+          .catch(() => {
+            // return empty data
+            callback(null, {
+              status: 404,
+              data: ''
+            });
           });
-        });
-      // }
+      }
     },
     //parse data before it has been sent by addPath
     parsePayload: function (ns, key) {
@@ -35,17 +41,14 @@ const i18nextOptions: InitOptions = {
       };
     }
   },
-  load: 'languageOnly',
+  // load: 'languageOnly',
   keySeparator: false, // we do not use keys in form messages.welcome
   saveMissing: true,
-  saveMissingTo: 'current',
-  missingKeyHandler: function (_, ns, key) {
-    axios.post('/translation/add', { key: ns + '.' + key });
-  },
   // debug: true,
   defaultNS: 'common',
   ns: ['common'],
   detection: {
+    // get user's lang based on localStorage first then from htmlTag
     order: [
       'localStorage',
       'htmlTag',
@@ -55,10 +58,6 @@ const i18nextOptions: InitOptions = {
       'path',
       'subdomain'
     ]
-  },
-  interpolation: {
-    // react already saves from xss
-    escapeValue: false
   }
 };
 
