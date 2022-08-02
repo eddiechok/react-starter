@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          run: |
-            cd /var/www/html/uwu-ui
-            git pull
-            ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd /var/www/html/uwu-ui
+          git pull
+          ${{ secrets.GITHUB_TOKEN }}
