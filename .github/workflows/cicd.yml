@@ -38,6 +38,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            whoami
             cd /var/www/html/uwu-ui
-            git pull
-            ${{ secrets.GITHUB_TOKEN }}
+            git pull https://${{secrets.PAT}}@github.com/smartblock/uwu-ui.git
+            npm run live
