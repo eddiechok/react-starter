@@ -4,7 +4,7 @@ import { useApp } from '@/providers/AppProvider';
 import appRoutes from '@/routes/app-routes';
 import { DRAWER_WIDTH, HAS_SIDEBAR } from '@/shared/constants';
 import { ToggleProps } from '@/shared/type';
-import { truncateSx } from '@/styles/styles';
+import { styles } from '@/styles/styles';
 import { Menu as MenuIcon, Person } from '@mui/icons-material';
 import {
   AppBar,
@@ -49,7 +49,7 @@ const Header = ({ title, present, ...props }: HeaderProps) => {
             <MenuIcon />
           </IconButton>
         )}
-        <Typography variant="h6" sx={{ flexGrow: 1, ...truncateSx }}>
+        <Typography variant="h6" sx={{ flexGrow: 1, ...styles.text.truncate }}>
           {title}
         </Typography>
         <IconButton

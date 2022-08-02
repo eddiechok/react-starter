@@ -1,20 +1,11 @@
 import { SYSTEM_DATE_FORMAT } from '@/shared/constants';
 import commonLabel from '@/translation/commonLabel';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker, { DatePickerProps } from '@mui/lab/DatePicker';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import { format } from 'date-fns';
-import enLocale from 'date-fns/locale/en-US';
-import zhLocale from 'date-fns/locale/zh-CN';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Optional } from 'utility-types';
-
-const localeMap: any = {
-  en: enLocale,
-  zh: zhLocale
-};
 
 export type AppDatePickerProps = Optional<DatePickerProps, 'renderInput'> & {
   textFieldProps?: TextFieldProps;
@@ -62,35 +53,30 @@ const AppDatePicker = React.forwardRef<
   };
 
   return (
-    <LocalizationProvider
-      dateAdapter={AdapterDateFns}
-      locale={localeMap[i18n.languages[0]]}
-    >
-      <DatePicker
-        {...props}
-        ref={ref}
-        onError={handleError}
-        okText={props.okText || t(commonLabel.confirm)}
-        cancelText={props.cancelText || t(commonLabel.cancel)}
-        inputFormat={SYSTEM_DATE_FORMAT}
-        renderInput={(params) => {
-          return props.renderInput ? (
-            props.renderInput(params)
-          ) : (
-            <TextField
-              {...params}
-              {...textFieldProps}
-              error={textFieldProps?.error || params.error}
-              helperText={
-                textFieldProps?.helperText !== undefined
-                  ? textFieldProps.helperText
-                  : params.error && errorMessage
-              }
-            />
-          );
-        }}
-      />
-    </LocalizationProvider>
+    <DatePicker
+      {...props}
+      ref={ref}
+      onError={handleError}
+      okText={props.okText || t(commonLabel.confirm)}
+      cancelText={props.cancelText || t(commonLabel.cancel)}
+      inputFormat={SYSTEM_DATE_FORMAT}
+      renderInput={(params) => {
+        return props.renderInput ? (
+          props.renderInput(params)
+        ) : (
+          <TextField
+            {...params}
+            {...textFieldProps}
+            error={textFieldProps?.error || params.error}
+            helperText={
+              textFieldProps?.helperText !== undefined
+                ? textFieldProps.helperText
+                : params.error && errorMessage
+            }
+          />
+        );
+      }}
+    />
   );
 });
 

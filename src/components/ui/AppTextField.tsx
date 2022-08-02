@@ -1,6 +1,7 @@
 import useDp from '@/hooks/useDp';
 import { FLOATING_LABEL } from '@/shared/constants';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Box,
   IconButton,
