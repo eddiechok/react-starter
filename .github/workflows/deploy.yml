@@ -21,6 +21,6 @@ jobs:
           script: |
             whoami
             cd /var/www/html/uwu-ui
-            git pull https://${{secrets.PAT}}@github.com/smartblock/uwu-ui.git
+            git pull https://${{secrets.GITHUB_TOKEN}}@github.com/smartblock/uwu-ui.git
             npm ci
             npm run live
