@@ -1,7 +1,7 @@
 import SpinWheel from '@/components/ui/spin-wheel/SpinWheel';
 import AppContainer from '@/layout/AppContainer';
 import { getRandomInteger } from '@/shared/functions';
-import { truncateSx } from '@/styles/styles';
+import { styles } from '@/styles/styles';
 import { Person } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 import React, { Reducer, useReducer, useState } from 'react';
@@ -111,7 +111,7 @@ const WheelSpinnerPage = () => {
                   gap: 2
                 }}
               >
-                <Typography variant="body1" sx={truncateSx}>
+                <Typography variant="body1" sx={{ ...styles.text.truncate }}>
                   Member {i + 1}
                 </Typography>
                 <Person
