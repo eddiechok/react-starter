@@ -4,6 +4,7 @@
 name: React Continuous Deployment
 
 on:
+  workflow_dispatch:
   push:
     branches: ['master']
 
@@ -21,6 +22,6 @@ jobs:
           script: |
             whoami
             cd /var/www/html/uwu-ui
-            git pull https://${{secrets.GITHUB_TOKEN}}@github.com/smartblock/uwu-ui.git
+            git pull https://${{github.token}}@github.com/smartblock/uwu-ui.git
             npm ci
             npm run live
