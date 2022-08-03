@@ -9,19 +9,45 @@ on:
     branches: ['master']
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
+    # strategy:
+    #   matrix:
+    #     node-version: [12.x, 14.x, 16.x]
+    # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
+      - uses: actions/checkout@v3
         with:
+          path: my-repo
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+      # - run: npm test
+      - name: Copy folder content recursively to remote
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: my-repo
+          remote: /var/www/html/react-starter
           host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            whoami
-            cd /var/www/html/uwu-ui
-            git pull https://${{github.token}}@github.com/smartblock/uwu-ui.git
-            npm ci
-            npm run live
+        # - name: executing remote ssh commands using password
+        #   uses: appleboy/ssh-action@master
+        #   with:
+        #     host: ${{ secrets.HOST }}
+        #     username: ${{ secrets.USERNAME }}
+        #     password: ${{ secrets.PASSWORD }}
+        #     port: ${{ secrets.PORT }}
+        #     script: |
+        #       whoami
+        #       cd /var/www/html/uwu-ui
+        #       git pull https://${{github.token}}@github.com/smartblock/uwu-ui.git
+        #       npm ci
+        #       npm run live
