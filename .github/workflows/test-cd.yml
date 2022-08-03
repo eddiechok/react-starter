@@ -1,10 +1,9 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: React Continuous Deployment
+name: Test Site Continuous Deployment
 
 on:
-  workflow_dispatch:
   push:
     branches: ['master']
 
@@ -24,7 +23,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run build --if-present
       # - run: npm test
@@ -37,16 +35,3 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-        # - name: executing remote ssh commands using password
-        #   uses: appleboy/ssh-action@master
-        #   with:
-        #     host: ${{ secrets.HOST }}
-        #     username: ${{ secrets.USERNAME }}
-        #     password: ${{ secrets.PASSWORD }}
-        #     port: ${{ secrets.PORT }}
-        #     script: |
-        #       whoami
-        #       cd /var/www/html/uwu-ui
-        #       git pull https://${{github.token}}@github.com/smartblock/uwu-ui.git
-        #       npm ci
-        #       npm run live
