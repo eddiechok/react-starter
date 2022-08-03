@@ -8,15 +8,20 @@ import { useParams } from 'react-router';
 const MemberGateway = () => {
   const { i18n } = useTranslation();
   const { token, lang } = useParams<'token' | 'lang'>();
-  const { login } = useApp();
+  const { login, isAuthenticated } = useApp();
   const navigate = useCustomNavigate();
 
   useEffect(() => {
     token && login(token, true);
-    i18n.changeLanguage(lang).then(() => {
-      navigate(appRoutes.home);
-    });
-  }, [navigate, i18n, lang, login, token]);
+  }, [login, token]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      i18n.changeLanguage(lang).then(() => {
+        navigate(appRoutes.home);
+      });
+    }
+  }, [i18n, isAuthenticated, lang, navigate]);
 
   return null;
 };
