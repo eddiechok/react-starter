@@ -7,6 +7,12 @@ on:
   push:
     branches: ['master']
 
+# Cancel the ongoing workflow in the same group if a new one is found
+# Refer: https://yonatankra.com/7-github-actions-tricks-i-wish-i-knew-before-i-started/
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,6 +32,7 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       # - run: npm test
+
       - name: Copy folder content recursively to remote
         uses: garygrossgarten/github-action-scp@release
         with:
